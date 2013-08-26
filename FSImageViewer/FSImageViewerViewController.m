@@ -197,9 +197,7 @@
         self.scrollView.backgroundColor = backgroundColor;
         for (FSImageView *imageView in _imageViews) {
             if ([imageView isKindOfClass:[FSImageView class]]) {
-                imageView.backgroundColor = backgroundColor;
-                imageView.imageView.backgroundColor = backgroundColor;
-                imageView.scrollView.backgroundColor = backgroundColor;
+                [imageView changeBackgroundColor:backgroundColor];;
             }
         }
     }];
@@ -382,6 +380,8 @@
 
     if (imageView == nil || (NSNull *) imageView == [NSNull null]) {
         imageView = [[FSImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _scrollView.bounds.size.width, _scrollView.bounds.size.height)];
+        UIColor *backgroundColor = barsHidden ? [UIColor blackColor] : [UIColor whiteColor];
+        [imageView changeBackgroundColor:backgroundColor];
         [_imageViews replaceObjectAtIndex:(NSUInteger) page withObject:imageView];
     }
 

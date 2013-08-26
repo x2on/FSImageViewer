@@ -40,6 +40,8 @@
 
 - (void)prepareForReuse;
 
+- (void)changeBackgroundColor:(UIColor *)color;
+
 - (void)rotateToOrientation:(UIInterfaceOrientation)orientation;
 
 @end

@@ -210,6 +210,13 @@
     self.tag = -1;
 }
 
+- (void)changeBackgroundColor:(UIColor *)color {
+    self.backgroundColor = color;
+    self.imageView.backgroundColor = color;
+    self.scrollView.backgroundColor = color;
+}
+
+
 - (void)handleFailedImage {
 
     _imageView.image = FSImageViewerErrorPlaceholderImage;
