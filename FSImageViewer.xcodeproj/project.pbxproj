@@ -1,0 +1,531 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5AB0DA258592480FB4099411 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 746D153768E9481F8194ECCE /* libPods.a */; };
+		FD89E29417CB99D900A41D91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E29317CB99D900A41D91 /* Foundation.framework */; };
+		FD89E2A717CB99F000A41D91 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E2A617CB99F000A41D91 /* UIKit.framework */; };
+		FD89E2A817CB99F000A41D91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E29317CB99D900A41D91 /* Foundation.framework */; };
+		FD89E2AA17CB99F000A41D91 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E2A917CB99F000A41D91 /* CoreGraphics.framework */; };
+		FD89E2B017CB99F000A41D91 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD89E2AE17CB99F000A41D91 /* InfoPlist.strings */; };
+		FD89E2B217CB99F000A41D91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2B117CB99F000A41D91 /* main.m */; };
+		FD89E2B617CB99F000A41D91 /* FSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2B517CB99F000A41D91 /* FSAppDelegate.m */; };
+		FD89E2B817CB99F000A41D91 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FD89E2B717CB99F000A41D91 /* Default.png */; };
+		FD89E2BA17CB99F000A41D91 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD89E2B917CB99F000A41D91 /* Default@2x.png */; };
+		FD89E2BC17CB99F000A41D91 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD89E2BB17CB99F000A41D91 /* Default-568h@2x.png */; };
+		FD89E2CA17CB9A0700A41D91 /* FSImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2C217CB9A0700A41D91 /* FSImageLoader.m */; };
+		FD89E2CB17CB9A0700A41D91 /* FSImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2C417CB9A0700A41D91 /* FSImageScrollView.m */; };
+		FD89E2CC17CB9A0700A41D91 /* FSImageTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2C717CB9A0700A41D91 /* FSImageTitleView.m */; };
+		FD89E2CD17CB9A0700A41D91 /* FSImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2C917CB9A0700A41D91 /* FSImageView.m */; };
+		FD89E2D217CB9A0E00A41D91 /* FSImageViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2CF17CB9A0E00A41D91 /* FSImageViewerViewController.m */; };
+		FD89E2D317CB9A0E00A41D91 /* FSPlaceholderImages.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2D117CB9A0E00A41D91 /* FSPlaceholderImages.m */; };
+		FD89E2DB17CB9A4400A41D91 /* FSDemoImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2D517CB9A4400A41D91 /* FSDemoImage.m */; };
+		FD89E2DC17CB9A4400A41D91 /* FSDemoImageSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2D717CB9A4400A41D91 /* FSDemoImageSource.m */; };
+		FD89E2DD17CB9A4400A41D91 /* FSDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2D917CB9A4400A41D91 /* FSDemoViewController.m */; };
+		FD89E2DE17CB9A4400A41D91 /* FSDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD89E2DA17CB9A4400A41D91 /* FSDemoViewController.xib */; };
+		FDD96CE417CB9B7400B66931 /* libFSImageViewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E29017CB99D900A41D91 /* libFSImageViewer.a */; };
+		FDD96CEB17CB9B9000B66931 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD96CE917CB9B8800B66931 /* CFNetwork.framework */; };
+		FDD96CEC17CB9B9100B66931 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD96CE717CB9B8500B66931 /* Security.framework */; };
+		FDD96CED17CB9B9300B66931 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD96CE517CB9B8000B66931 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FDD96CE217CB9B7000B66931 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD89E28817CB99D900A41D91 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FD89E28F17CB99D900A41D91;
+			remoteInfo = FSImageViewer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FD89E28E17CB99D900A41D91 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		746D153768E9481F8194ECCE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0D07532210640A9B5D7DCD1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		FD89E29017CB99D900A41D91 /* libFSImageViewer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFSImageViewer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD89E29317CB99D900A41D91 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FD89E29717CB99D900A41D91 /* FSImageViewer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSImageViewer-Prefix.pch"; sourceTree = "<group>"; };
+		FD89E2A517CB99F000A41D91 /* FSImageViewerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSImageViewerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD89E2A617CB99F000A41D91 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FD89E2A917CB99F000A41D91 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FD89E2AD17CB99F000A41D91 /* FSImageViewerDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FSImageViewerDemo-Info.plist"; sourceTree = "<group>"; };
+		FD89E2AF17CB99F000A41D91 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FD89E2B117CB99F000A41D91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FD89E2B317CB99F000A41D91 /* FSImageViewerDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSImageViewerDemo-Prefix.pch"; sourceTree = "<group>"; };
+		FD89E2B417CB99F000A41D91 /* FSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSAppDelegate.h; sourceTree = "<group>"; };
+		FD89E2B517CB99F000A41D91 /* FSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSAppDelegate.m; sourceTree = "<group>"; };
+		FD89E2B717CB99F000A41D91 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		FD89E2B917CB99F000A41D91 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		FD89E2BB17CB99F000A41D91 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		FD89E2C017CB9A0700A41D91 /* FSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImage.h; sourceTree = "<group>"; };
+		FD89E2C117CB9A0700A41D91 /* FSImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageLoader.h; sourceTree = "<group>"; };
+		FD89E2C217CB9A0700A41D91 /* FSImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageLoader.m; sourceTree = "<group>"; };
+		FD89E2C317CB9A0700A41D91 /* FSImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageScrollView.h; sourceTree = "<group>"; };
+		FD89E2C417CB9A0700A41D91 /* FSImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageScrollView.m; sourceTree = "<group>"; };
+		FD89E2C517CB9A0700A41D91 /* FSImageSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageSource.h; sourceTree = "<group>"; };
+		FD89E2C617CB9A0700A41D91 /* FSImageTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageTitleView.h; sourceTree = "<group>"; };
+		FD89E2C717CB9A0700A41D91 /* FSImageTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageTitleView.m; sourceTree = "<group>"; };
+		FD89E2C817CB9A0700A41D91 /* FSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageView.h; sourceTree = "<group>"; };
+		FD89E2C917CB9A0700A41D91 /* FSImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageView.m; sourceTree = "<group>"; };
+		FD89E2CE17CB9A0E00A41D91 /* FSImageViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageViewerViewController.h; sourceTree = "<group>"; };
+		FD89E2CF17CB9A0E00A41D91 /* FSImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageViewerViewController.m; sourceTree = "<group>"; };
+		FD89E2D017CB9A0E00A41D91 /* FSPlaceholderImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPlaceholderImages.h; sourceTree = "<group>"; };
+		FD89E2D117CB9A0E00A41D91 /* FSPlaceholderImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPlaceholderImages.m; sourceTree = "<group>"; };
+		FD89E2D417CB9A4400A41D91 /* FSDemoImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDemoImage.h; sourceTree = "<group>"; };
+		FD89E2D517CB9A4400A41D91 /* FSDemoImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDemoImage.m; sourceTree = "<group>"; };
+		FD89E2D617CB9A4400A41D91 /* FSDemoImageSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDemoImageSource.h; sourceTree = "<group>"; };
+		FD89E2D717CB9A4400A41D91 /* FSDemoImageSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDemoImageSource.m; sourceTree = "<group>"; };
+		FD89E2D817CB9A4400A41D91 /* FSDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDemoViewController.h; sourceTree = "<group>"; };
+		FD89E2D917CB9A4400A41D91 /* FSDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDemoViewController.m; sourceTree = "<group>"; };
+		FD89E2DA17CB9A4400A41D91 /* FSDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSDemoViewController.xib; sourceTree = "<group>"; };
+		FDD96CE117CB9ADC00B66931 /* FSImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageViewer.h; sourceTree = "<group>"; };
+		FDD96CE517CB9B8000B66931 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FDD96CE717CB9B8500B66931 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		FDD96CE917CB9B8800B66931 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FD89E28D17CB99D900A41D91 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD89E29417CB99D900A41D91 /* Foundation.framework in Frameworks */,
+				5AB0DA258592480FB4099411 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD89E2A217CB99F000A41D91 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDD96CE417CB9B7400B66931 /* libFSImageViewer.a in Frameworks */,
+				FDD96CEB17CB9B9000B66931 /* CFNetwork.framework in Frameworks */,
+				FDD96CEC17CB9B9100B66931 /* Security.framework in Frameworks */,
+				FDD96CED17CB9B9300B66931 /* QuartzCore.framework in Frameworks */,
+				FD89E2A717CB99F000A41D91 /* UIKit.framework in Frameworks */,
+				FD89E2A817CB99F000A41D91 /* Foundation.framework in Frameworks */,
+				FD89E2AA17CB99F000A41D91 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FD89E28717CB99D900A41D91 = {
+			isa = PBXGroup;
+			children = (
+				FD89E29517CB99D900A41D91 /* FSImageViewer */,
+				FD89E2AB17CB99F000A41D91 /* FSImageViewerDemo */,
+				FD89E29217CB99D900A41D91 /* Frameworks */,
+				FD89E29117CB99D900A41D91 /* Products */,
+				E0D07532210640A9B5D7DCD1 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		FD89E29117CB99D900A41D91 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD89E29017CB99D900A41D91 /* libFSImageViewer.a */,
+				FD89E2A517CB99F000A41D91 /* FSImageViewerDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FD89E29217CB99D900A41D91 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FDD96CE917CB9B8800B66931 /* CFNetwork.framework */,
+				FDD96CE717CB9B8500B66931 /* Security.framework */,
+				FDD96CE517CB9B8000B66931 /* QuartzCore.framework */,
+				FD89E29317CB99D900A41D91 /* Foundation.framework */,
+				FD89E2A617CB99F000A41D91 /* UIKit.framework */,
+				FD89E2A917CB99F000A41D91 /* CoreGraphics.framework */,
+				746D153768E9481F8194ECCE /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD89E29517CB99D900A41D91 /* FSImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				FDD96CE117CB9ADC00B66931 /* FSImageViewer.h */,
+				FD89E2C017CB9A0700A41D91 /* FSImage.h */,
+				FD89E2C117CB9A0700A41D91 /* FSImageLoader.h */,
+				FD89E2C217CB9A0700A41D91 /* FSImageLoader.m */,
+				FD89E2C317CB9A0700A41D91 /* FSImageScrollView.h */,
+				FD89E2C417CB9A0700A41D91 /* FSImageScrollView.m */,
+				FD89E2C517CB9A0700A41D91 /* FSImageSource.h */,
+				FD89E2C617CB9A0700A41D91 /* FSImageTitleView.h */,
+				FD89E2C717CB9A0700A41D91 /* FSImageTitleView.m */,
+				FD89E2C817CB9A0700A41D91 /* FSImageView.h */,
+				FD89E2C917CB9A0700A41D91 /* FSImageView.m */,
+				FD89E2CE17CB9A0E00A41D91 /* FSImageViewerViewController.h */,
+				FD89E2CF17CB9A0E00A41D91 /* FSImageViewerViewController.m */,
+				FD89E2D017CB9A0E00A41D91 /* FSPlaceholderImages.h */,
+				FD89E2D117CB9A0E00A41D91 /* FSPlaceholderImages.m */,
+				FD89E29617CB99D900A41D91 /* Supporting Files */,
+			);
+			path = FSImageViewer;
+			sourceTree = "<group>";
+		};
+		FD89E29617CB99D900A41D91 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FD89E29717CB99D900A41D91 /* FSImageViewer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FD89E2AB17CB99F000A41D91 /* FSImageViewerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				FD89E2B417CB99F000A41D91 /* FSAppDelegate.h */,
+				FD89E2B517CB99F000A41D91 /* FSAppDelegate.m */,
+				FD89E2D417CB9A4400A41D91 /* FSDemoImage.h */,
+				FD89E2D517CB9A4400A41D91 /* FSDemoImage.m */,
+				FD89E2D617CB9A4400A41D91 /* FSDemoImageSource.h */,
+				FD89E2D717CB9A4400A41D91 /* FSDemoImageSource.m */,
+				FD89E2D817CB9A4400A41D91 /* FSDemoViewController.h */,
+				FD89E2D917CB9A4400A41D91 /* FSDemoViewController.m */,
+				FD89E2DA17CB9A4400A41D91 /* FSDemoViewController.xib */,
+				FD89E2AC17CB99F000A41D91 /* Supporting Files */,
+			);
+			path = FSImageViewerDemo;
+			sourceTree = "<group>";
+		};
+		FD89E2AC17CB99F000A41D91 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FD89E2AD17CB99F000A41D91 /* FSImageViewerDemo-Info.plist */,
+				FD89E2AE17CB99F000A41D91 /* InfoPlist.strings */,
+				FD89E2B117CB99F000A41D91 /* main.m */,
+				FD89E2B317CB99F000A41D91 /* FSImageViewerDemo-Prefix.pch */,
+				FD89E2B717CB99F000A41D91 /* Default.png */,
+				FD89E2B917CB99F000A41D91 /* Default@2x.png */,
+				FD89E2BB17CB99F000A41D91 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FD89E28F17CB99D900A41D91 /* FSImageViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD89E29E17CB99D900A41D91 /* Build configuration list for PBXNativeTarget "FSImageViewer" */;
+			buildPhases = (
+				668C822E290F479BBF42B716 /* Check Pods Manifest.lock */,
+				FD89E28C17CB99D900A41D91 /* Sources */,
+				FD89E28D17CB99D900A41D91 /* Frameworks */,
+				FD89E28E17CB99D900A41D91 /* CopyFiles */,
+				F7A857B1B6AA493B8B48C1BD /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FSImageViewer;
+			productName = FSImageViewer;
+			productReference = FD89E29017CB99D900A41D91 /* libFSImageViewer.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		FD89E2A417CB99F000A41D91 /* FSImageViewerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD89E2BD17CB99F000A41D91 /* Build configuration list for PBXNativeTarget "FSImageViewerDemo" */;
+			buildPhases = (
+				FD89E2A117CB99F000A41D91 /* Sources */,
+				FD89E2A217CB99F000A41D91 /* Frameworks */,
+				FD89E2A317CB99F000A41D91 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FDD96CE317CB9B7000B66931 /* PBXTargetDependency */,
+			);
+			name = FSImageViewerDemo;
+			productName = FSImageViewerDemo;
+			productReference = FD89E2A517CB99F000A41D91 /* FSImageViewerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FD89E28817CB99D900A41D91 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Felix Schulze";
+			};
+			buildConfigurationList = FD89E28B17CB99D900A41D91 /* Build configuration list for PBXProject "FSImageViewer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FD89E28717CB99D900A41D91;
+			productRefGroup = FD89E29117CB99D900A41D91 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FD89E28F17CB99D900A41D91 /* FSImageViewer */,
+				FD89E2A417CB99F000A41D91 /* FSImageViewerDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FD89E2A317CB99F000A41D91 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD89E2B017CB99F000A41D91 /* InfoPlist.strings in Resources */,
+				FD89E2B817CB99F000A41D91 /* Default.png in Resources */,
+				FD89E2BA17CB99F000A41D91 /* Default@2x.png in Resources */,
+				FD89E2BC17CB99F000A41D91 /* Default-568h@2x.png in Resources */,
+				FD89E2DE17CB9A4400A41D91 /* FSDemoViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		668C822E290F479BBF42B716 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F7A857B1B6AA493B8B48C1BD /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FD89E28C17CB99D900A41D91 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD89E2CA17CB9A0700A41D91 /* FSImageLoader.m in Sources */,
+				FD89E2CB17CB9A0700A41D91 /* FSImageScrollView.m in Sources */,
+				FD89E2CC17CB9A0700A41D91 /* FSImageTitleView.m in Sources */,
+				FD89E2CD17CB9A0700A41D91 /* FSImageView.m in Sources */,
+				FD89E2D217CB9A0E00A41D91 /* FSImageViewerViewController.m in Sources */,
+				FD89E2D317CB9A0E00A41D91 /* FSPlaceholderImages.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD89E2A117CB99F000A41D91 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD89E2B217CB99F000A41D91 /* main.m in Sources */,
+				FD89E2B617CB99F000A41D91 /* FSAppDelegate.m in Sources */,
+				FD89E2DB17CB9A4400A41D91 /* FSDemoImage.m in Sources */,
+				FD89E2DC17CB9A4400A41D91 /* FSDemoImageSource.m in Sources */,
+				FD89E2DD17CB9A4400A41D91 /* FSDemoViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FDD96CE317CB9B7000B66931 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FD89E28F17CB99D900A41D91 /* FSImageViewer */;
+			targetProxy = FDD96CE217CB9B7000B66931 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FD89E2AE17CB99F000A41D91 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD89E2AF17CB99F000A41D91 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FD89E29C17CB99D900A41D91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FD89E29D17CB99D900A41D91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "$(inherited)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FD89E29F17CB99D900A41D91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0D07532210640A9B5D7DCD1 /* Pods.xcconfig */;
+			buildSettings = {
+				DSTROOT = /tmp/FSImageViewer.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FSImageViewer/FSImageViewer-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FD89E2A017CB99D900A41D91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0D07532210640A9B5D7DCD1 /* Pods.xcconfig */;
+			buildSettings = {
+				DSTROOT = /tmp/FSImageViewer.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FSImageViewer/FSImageViewer-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		FD89E2BE17CB99F000A41D91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FSImageViewerDemo/FSImageViewerDemo-Prefix.pch";
+				INFOPLIST_FILE = "FSImageViewerDemo/FSImageViewerDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FD89E2BF17CB99F000A41D91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FSImageViewerDemo/FSImageViewerDemo-Prefix.pch";
+				INFOPLIST_FILE = "FSImageViewerDemo/FSImageViewerDemo-Info.plist";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FD89E28B17CB99D900A41D91 /* Build configuration list for PBXProject "FSImageViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD89E29C17CB99D900A41D91 /* Debug */,
+				FD89E29D17CB99D900A41D91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD89E29E17CB99D900A41D91 /* Build configuration list for PBXNativeTarget "FSImageViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD89E29F17CB99D900A41D91 /* Debug */,
+				FD89E2A017CB99D900A41D91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD89E2BD17CB99F000A41D91 /* Build configuration list for PBXNativeTarget "FSImageViewerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD89E2BE17CB99F000A41D91 /* Debug */,
+				FD89E2BF17CB99F000A41D91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FD89E28817CB99D900A41D91 /* Project object */;
+}
