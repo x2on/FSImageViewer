@@ -22,6 +22,8 @@
 //  THE SOFTWARE.
 //
 
+#import <UIKit/UIKit.h>
+
 @interface FSPlaceholderImages : NSObject
 
 + (UIImage *)errorImage;

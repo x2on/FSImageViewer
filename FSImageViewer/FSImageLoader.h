@@ -22,6 +22,8 @@
 //  THE SOFTWARE.
 //
 
+#import <UIKit/UIKit.h>
+
 @interface FSImageLoader : NSObject
 
 @property(assign, nonatomic) NSTimeInterval timeoutInterval; // Default is 30 seconds

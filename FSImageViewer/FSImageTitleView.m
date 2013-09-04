@@ -22,6 +22,7 @@
 //  THE SOFTWARE.
 //
 
+#import <UIKit/UIKit.h>
 #import "FSImageTitleView.h"
 
 @implementation FSImageTitleView {
