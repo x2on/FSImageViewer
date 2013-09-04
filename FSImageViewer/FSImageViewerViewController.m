@@ -40,10 +40,10 @@
 }
 
 - (id)initWithImageSource:(id <FSImageSource>)aImageSource {
-    return [self initWithImageSource:aImageSource andImageIndex:0];
+    return [self initWithImageSource:aImageSource imageIndex:0];
 }
 
-- (id)initWithImageSource:(id <FSImageSource>)aImageSource andImageIndex:(NSInteger)imageIndex {
+- (id)initWithImageSource:(id <FSImageSource>)aImageSource imageIndex:(NSInteger)imageIndex {
     if ((self = [super init])) {
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleBarsNotification:) name:kFSImageViewerToogleBarsNotificationKey object:nil];
@@ -60,6 +60,7 @@
 
 - (void)dealloc {
     _scrollView.delegate = nil;
+    [[FSImageLoader sharedInstance] cancelAllRequests];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

@@ -24,11 +24,21 @@
 
 #import "FSImageViewer.h"
 
+/// FSBasicImage is a standard implementation of FSImage. It can download images from an URL or use an image.
 @interface FSBasicImage : NSObject<FSImage>
 
-- (id)initWithImageURL:(NSURL *)aURL name:(NSString *)aName image:(UIImage *)aImage;
-- (id)initWithImageURL:(NSURL *)aURL name:(NSString *)aName;
-- (id)initWithImageURL:(NSURL *)aURL;
-- (id)initWithImage:(UIImage *)aImage;
-- (id)initWithImage:(UIImage *)aImage name:(NSString *)aName;
+/// @param URL remote image URL
+/// @param name title of the image
+- (id)initWithImageURL:(NSURL *)URL name:(NSString *)name;
+
+/// @param URL remote image URL
+- (id)initWithImageURL:(NSURL *)URL;
+
+/// @param image an UIImage representation of the image
+- (id)initWithImage:(UIImage *)image;
+
+/// @param image an UIImage representation of the image
+/// @param name title of the image
+- (id)initWithImage:(UIImage *)image name:(NSString *)name;
+
 @end

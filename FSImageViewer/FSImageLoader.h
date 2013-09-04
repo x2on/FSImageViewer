@@ -24,14 +24,25 @@
 
 #import <UIKit/UIKit.h>
 
+/// Download remote images with AFNetworking
 @interface FSImageLoader : NSObject
 
-@property(assign, nonatomic) NSTimeInterval timeoutInterval; // Default is 30 seconds
+/// Timeout for remote image downloading - Default is 30 seconds
+@property(assign, nonatomic) NSTimeInterval timeoutInterval;
 
+/// Singleton getter
 + (FSImageLoader *)sharedInstance;
 
-- (void)cancelRequestForUrl:(NSURL *)aURL;
+/// Download remote images from url
+/// @param url remote image url
+/// @param imageBlock block for image or error
+- (void)loadImageForURL:(NSURL *)url image:(void (^)(UIImage *image, NSError *error))imageBlock;
 
-- (void)loadImageForURL:(NSURL *)aURL image:(void (^)(UIImage *image, NSError *error))imageBlock;
+/// Cancel all image requests
+- (void)cancelAllRequests;
+
+/// Cancel image request
+/// @param url remote image url
+- (void)cancelRequestForUrl:(NSURL *)url;
 
 @end

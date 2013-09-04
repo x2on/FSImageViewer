@@ -25,18 +25,32 @@
 #import "FSImageViewer.h"
 #import "FSImageSource.h"
 
+/// FSImageViewerViewController is an UIViewController which can present images.
 @interface FSImageViewerViewController : UIViewController <UIScrollViewDelegate>
 
-- (id)initWithImageSource:(id <FSImageSource>)aImageSource;
+/// @param imageSource image data source
+- (id)initWithImageSource:(id <FSImageSource>)imageSource;
 
-- (id)initWithImageSource:(id <FSImageSource>)aImageSource andImageIndex:(NSInteger)imageIndex;
+/// @param imageSource image data source
+/// @param imageIndex the index of the first shown image
+- (id)initWithImageSource:(id <FSImageSource>)imageSource imageIndex:(NSInteger)imageIndex;
 
+/// Image data source
 @property(strong, nonatomic, readonly) id <FSImageSource> imageSource;
+
+/// FSImageView array
 @property(strong, nonatomic) NSMutableArray *imageViews;
+
+/// Main scrollView
 @property(strong, nonatomic) UIScrollView *scrollView;
 
+/// Current index of the image displayed
+/// @return current index of the image displayed
 - (NSInteger)currentImageIndex;
 
+/// Move the FSImageView to the index
+/// @param index index move to
+/// @param animated should the movevement animated
 - (void)moveToImageAtIndex:(NSInteger)index animated:(BOOL)animated;
 
 @end

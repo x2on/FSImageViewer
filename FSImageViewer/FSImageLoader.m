@@ -50,6 +50,10 @@
 }
 
 - (void)dealloc {
+    [self cancelAllRequests];
+}
+
+- (void)cancelAllRequests {
     for (AFImageRequestOperation *imageRequestOperation in runningRequests) {
         [imageRequestOperation cancel];
     }
