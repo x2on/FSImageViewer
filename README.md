@@ -10,6 +10,31 @@ Using [CocoaPods](http://cocoapods.org/):
 
 `pod 'FSImageViewer', :podspec => 'https://raw.github.com/x2on/FSImageViewer/master/FSImageViewer'`
 
+## Basic usage
+
+Create your image objects: 
+
+```objc
+FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://example.com/1.jpg"] name:@"Photo 1"];
+FSBasicImage *secondPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://example.com/2.jpg"] name:@"Photo 2"];
+```
+
+And add them to the data source:
+
+```objc
+FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto, secondPhoto]];
+```
+
+And create and show the view controller:
+```objc
+FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
+[self.navigationController pushViewController:imageViewController animated:YES];
+```
+
+## Advanced usage
+
+You can also create your own image class by implementing the `FSImage` protocol and your own datasource by implementing the `FSImageSource` protocol.
+
 ## Demo
 
 The demo project uses [CocoaPods](http://cocoapods.org/) for dependency management.
