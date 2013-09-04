@@ -1,5 +1,4 @@
-# FSImageViewer [![Build Status](https://travis-ci.org/x2on/FSImageViewer.png)](https://travis-ci.org/x2on/FSImageViewer)
-
+# FSImageViewer [![Build Status](https://travis-ci.org/x2on/FSImageViewer.png)](https://travis-ci.org/x2on/FSImageViewer) [![Cocoa Pod](http://cocoapod-badges.herokuapp.com/p/FSImageViewer/badge.svg)](http://cocoadocs.org/docsets/FSImageViewer/) [![Cocoa Pod](http://cocoapod-badges.herokuapp.com/v/FSImageViewer/badge.svg)](http://cocoadocs.org/docsets/FSImageViewer/)
 
 FSImageViewer is a photo viewer for iOS.
 
