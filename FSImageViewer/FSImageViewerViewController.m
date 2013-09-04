@@ -121,6 +121,7 @@
     [self moveToImageAtIndex:pageIndex animated:NO];
 }
 
+#ifdef __IPHONE_7_0
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
@@ -130,6 +131,7 @@
         self.scrollView.contentInset = UIEdgeInsetsMake(self.scrollView.contentInset.top+self.topLayoutGuide.length, 0, self.scrollView.contentInset.bottom+self.bottomLayoutGuide.length, 0);
     }
 }
+#endif
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
