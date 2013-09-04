@@ -85,22 +85,24 @@
         [self cancelRequestForUrl:aURL];
 
         NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:aURL cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:_timeoutInterval];
-        AFImageRequestOperation *imageRequestOperation = [AFImageRequestOperation imageRequestOperationWithRequest:urlRequest imageProcessingBlock:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        AFImageRequestOperation *imageRequestOperation = [[AFImageRequestOperation alloc] initWithRequest:urlRequest];
+        [runningRequests addObject:imageRequestOperation];
 
+        __weak AFImageRequestOperation *imageRequestOperationForBlock = imageRequestOperation;
+        [imageRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            UIImage *image = responseObject;
             [[EGOCache globalCache] setImage:image forKey:cacheKey];
             if (imageBlock) {
                 imageBlock(image, nil);
             }
-            [runningRequests removeObject:imageRequestOperation];
-
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+            [runningRequests removeObject:imageRequestOperationForBlock];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             if (imageBlock) {
                 imageBlock(nil, error);
             }
-            [runningRequests removeObject:imageRequestOperation];
-
+            [runningRequests removeObject:imageRequestOperationForBlock];
         }];
-        [runningRequests addObject:imageRequestOperation];
+
         [imageRequestOperation start];
     }
 }
