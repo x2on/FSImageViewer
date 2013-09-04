@@ -121,6 +121,16 @@
     [self moveToImageAtIndex:pageIndex animated:NO];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if ([self respondsToSelector:@selector(topLayoutGuide)] && [self respondsToSelector:@selector(bottomLayoutGuide)])
+    {
+        self.scrollView.contentInset = UIEdgeInsetsMake(self.scrollView.contentInset.top+self.topLayoutGuide.length, 0, self.scrollView.contentInset.bottom+self.bottomLayoutGuide.length, 0);
+    }
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         return (interfaceOrientation == UIInterfaceOrientationLandscapeRight || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
