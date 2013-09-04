@@ -29,7 +29,8 @@
 @property(strong, nonatomic, readonly) NSArray *images;
 @property(assign, nonatomic, readonly) NSInteger numberOfImages;
 
-- (id <FSImage>)imageAtIndex:(NSInteger)index;
+- (id <FSImage>)imageAtIndex:(NSInteger)index DEPRECATED_ATTRIBUTE;
+- (id <FSImage>)objectAtIndexedSubscript:(NSUInteger)index;
 
 @end
 

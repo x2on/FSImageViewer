@@ -1,6 +1,6 @@
-//  FSImageViewerDemo
+//  FSImageViewer
 //
-//  Created by Felix Schulze on 8/26/2013.
+//  Created by Felix Schulze on 9/04/2013.
 //  Copyright 2013 Felix Schulze. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,10 +22,30 @@
 //  THE SOFTWARE.
 //
 
-#import "FSImageSource.h"
+#import "FSBasicImageSource.h"
 
-@interface FSDemoImageSource : NSObject<FSImageSource>
+@implementation FSBasicImageSource
 
-- (id)initWithImages:(NSArray*)images;
+@synthesize images = _images;
+@synthesize numberOfImages = _numberOfImages;
+
+- (id)initWithImages:(NSArray*)images{
+	
+	if (self = [super init]) {
+        _images = images;
+        _numberOfImages = [images count];
+	}
+	
+	return self;
+    
+}
+
+- (id <FSImage>)imageAtIndex:(NSInteger)index {
+    return _images[index];
+}
+
+- (id <FSImage>)objectAtIndexedSubscript:(NSUInteger)index {
+    return _images[index];
+}
 
 @end

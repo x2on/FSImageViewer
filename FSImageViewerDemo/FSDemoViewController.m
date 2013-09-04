@@ -24,7 +24,7 @@
 
 #import "FSDemoViewController.h"
 #import "FSDemoImage.h"
-#import "FSDemoImageSource.h"
+#import "FSBasicImageSource.h"
 
 @interface FSDemoViewController ()
 
@@ -53,11 +53,11 @@
 
 
 - (IBAction)openGallery {
-    FSDemoImage *webPhoto = [[FSDemoImage alloc] initWithImageURL:[NSURL URLWithString:@"http://a3.twimg.com/profile_images/66601193/cactus.jpg"] name:@"Some nice cactus"];
-    FSDemoImage *flickrPhoto = [[FSDemoImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm4.staticflickr.com/3692/9573432231_1e2a0003d3.jpg"] name:@"Some flickr image"];
+    FSDemoImage *firstPhoto = [[FSDemoImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm8.staticflickr.com/7319/9668947331_3112b1fcca_b.jpg"] name:@"Photo by Brian Adamson"];
+    FSDemoImage *secondPhoto = [[FSDemoImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm9.staticflickr.com/8023/6971840814_68614eba26_b.jpg"] name:@"Photo by Ben Fredericson"];
     FSDemoImage *failingPhoto = [[FSDemoImage alloc] initWithImageURL:[NSURL URLWithString:@"http://example.com/1.jpg"] name:@"Failure image"];
 
-    FSDemoImageSource *photoSource = [[FSDemoImageSource alloc] initWithImages:@[webPhoto, flickrPhoto, failingPhoto]];
+    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto, secondPhoto, failingPhoto]];
     self.imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {

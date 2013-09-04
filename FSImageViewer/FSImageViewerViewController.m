@@ -218,7 +218,7 @@
         return;
     }
 
-    if ([[notification object][@"image"] isEqual:[_imageSource imageAtIndex:[self centerImageIndex]]]) {
+    if ([[notification object][@"image"] isEqual:_imageSource[[self centerImageIndex]]]) {
         if ([[notification object][@"failed"] boolValue]) {
             if (barsHidden) {
                 [self setBarsHidden:NO animated:YES];
@@ -251,7 +251,7 @@
     }
 
     if (_titleView) {
-        _titleView.text = [_imageSource imageAtIndex:pageIndex].title;
+        _titleView.text = _imageSource[pageIndex].title;
     }
 
 }
@@ -270,7 +270,7 @@
 
         [self.scrollView scrollRectToVisible:((FSImageView *) [_imageViews objectAtIndex:(NSUInteger) index]).frame animated:animated];
 
-        if ([self.imageSource imageAtIndex:pageIndex].failed) {
+        if (_imageSource[pageIndex].failed) {
             [self setBarsHidden:NO animated:YES];
         }
 
@@ -385,7 +385,7 @@
         [_imageViews replaceObjectAtIndex:(NSUInteger) page withObject:imageView];
     }
 
-    imageView.image = [_imageSource imageAtIndex:page];
+    imageView.image = _imageSource[page];
 
     if (imageView.superview == nil) {
         [_scrollView addSubview:imageView];
