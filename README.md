@@ -1,4 +1,5 @@
-# FSImageViewer
+# FSImageViewer [![Build Status](https://travis-ci.org/x2on/FSImageViewer.png)](https://travis-ci.org/x2on/FSImageViewer)
+
 
 FSImageViewer is a photo viewer for iOS.
 
