@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5AB0DA258592480FB4099411 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 746D153768E9481F8194ECCE /* libPods.a */; };
 		FD0FEFBB17D77F1C00470082 /* FSBasicImageSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0FEFBA17D77F1C00470082 /* FSBasicImageSource.m */; };
+		FD0FEFBF17D781EF00470082 /* FSBasicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0FEFBE17D781EF00470082 /* FSBasicImage.m */; };
 		FD89E29417CB99D900A41D91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E29317CB99D900A41D91 /* Foundation.framework */; };
 		FD89E2A717CB99F000A41D91 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E2A617CB99F000A41D91 /* UIKit.framework */; };
 		FD89E2A817CB99F000A41D91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E29317CB99D900A41D91 /* Foundation.framework */; };
@@ -25,7 +26,6 @@
 		FD89E2CD17CB9A0700A41D91 /* FSImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2C917CB9A0700A41D91 /* FSImageView.m */; };
 		FD89E2D217CB9A0E00A41D91 /* FSImageViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2CF17CB9A0E00A41D91 /* FSImageViewerViewController.m */; };
 		FD89E2D317CB9A0E00A41D91 /* FSPlaceholderImages.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2D117CB9A0E00A41D91 /* FSPlaceholderImages.m */; };
-		FD89E2DB17CB9A4400A41D91 /* FSDemoImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2D517CB9A4400A41D91 /* FSDemoImage.m */; };
 		FD89E2DD17CB9A4400A41D91 /* FSDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2D917CB9A4400A41D91 /* FSDemoViewController.m */; };
 		FD89E2DE17CB9A4400A41D91 /* FSDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD89E2DA17CB9A4400A41D91 /* FSDemoViewController.xib */; };
 		FDD96CE417CB9B7400B66931 /* libFSImageViewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E29017CB99D900A41D91 /* libFSImageViewer.a */; };
@@ -61,6 +61,8 @@
 		E0D07532210640A9B5D7DCD1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		FD0FEFB917D77F1C00470082 /* FSBasicImageSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBasicImageSource.h; sourceTree = "<group>"; };
 		FD0FEFBA17D77F1C00470082 /* FSBasicImageSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBasicImageSource.m; sourceTree = "<group>"; };
+		FD0FEFBD17D781EF00470082 /* FSBasicImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBasicImage.h; sourceTree = "<group>"; };
+		FD0FEFBE17D781EF00470082 /* FSBasicImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBasicImage.m; sourceTree = "<group>"; };
 		FD89E29017CB99D900A41D91 /* libFSImageViewer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFSImageViewer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD89E29317CB99D900A41D91 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FD89E29717CB99D900A41D91 /* FSImageViewer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSImageViewer-Prefix.pch"; sourceTree = "<group>"; };
@@ -90,8 +92,6 @@
 		FD89E2CF17CB9A0E00A41D91 /* FSImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageViewerViewController.m; sourceTree = "<group>"; };
 		FD89E2D017CB9A0E00A41D91 /* FSPlaceholderImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPlaceholderImages.h; sourceTree = "<group>"; };
 		FD89E2D117CB9A0E00A41D91 /* FSPlaceholderImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPlaceholderImages.m; sourceTree = "<group>"; };
-		FD89E2D417CB9A4400A41D91 /* FSDemoImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDemoImage.h; sourceTree = "<group>"; };
-		FD89E2D517CB9A4400A41D91 /* FSDemoImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDemoImage.m; sourceTree = "<group>"; };
 		FD89E2D817CB9A4400A41D91 /* FSDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDemoViewController.h; sourceTree = "<group>"; };
 		FD89E2D917CB9A4400A41D91 /* FSDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDemoViewController.m; sourceTree = "<group>"; };
 		FD89E2DA17CB9A4400A41D91 /* FSDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSDemoViewController.xib; sourceTree = "<group>"; };
@@ -167,6 +167,8 @@
 			children = (
 				FDD96CE117CB9ADC00B66931 /* FSImageViewer.h */,
 				FD89E2C017CB9A0700A41D91 /* FSImage.h */,
+				FD0FEFBD17D781EF00470082 /* FSBasicImage.h */,
+				FD0FEFBE17D781EF00470082 /* FSBasicImage.m */,
 				FD89E2C117CB9A0700A41D91 /* FSImageLoader.h */,
 				FD89E2C217CB9A0700A41D91 /* FSImageLoader.m */,
 				FD89E2C317CB9A0700A41D91 /* FSImageScrollView.h */,
@@ -200,8 +202,6 @@
 			children = (
 				FD89E2B417CB99F000A41D91 /* FSAppDelegate.h */,
 				FD89E2B517CB99F000A41D91 /* FSAppDelegate.m */,
-				FD89E2D417CB9A4400A41D91 /* FSDemoImage.h */,
-				FD89E2D517CB9A4400A41D91 /* FSDemoImage.m */,
 				FD89E2D817CB9A4400A41D91 /* FSDemoViewController.h */,
 				FD89E2D917CB9A4400A41D91 /* FSDemoViewController.m */,
 				FD89E2DA17CB9A4400A41D91 /* FSDemoViewController.xib */,
@@ -351,6 +351,7 @@
 				FD89E2D217CB9A0E00A41D91 /* FSImageViewerViewController.m in Sources */,
 				FD89E2D317CB9A0E00A41D91 /* FSPlaceholderImages.m in Sources */,
 				FD0FEFBB17D77F1C00470082 /* FSBasicImageSource.m in Sources */,
+				FD0FEFBF17D781EF00470082 /* FSBasicImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +361,6 @@
 			files = (
 				FD89E2B217CB99F000A41D91 /* main.m in Sources */,
 				FD89E2B617CB99F000A41D91 /* FSAppDelegate.m in Sources */,
-				FD89E2DB17CB9A4400A41D91 /* FSDemoImage.m in Sources */,
 				FD89E2DD17CB9A4400A41D91 /* FSDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

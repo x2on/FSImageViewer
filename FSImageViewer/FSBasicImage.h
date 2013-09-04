@@ -1,6 +1,6 @@
-//  FSImageViewerDemo
+//  FSImageViewer
 //
-//  Created by Felix Schulze on 8/26/2013.
+//  Created by Felix Schulze on 9/04/2013.
 //  Copyright 2013 Felix Schulze. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,37 +22,13 @@
 //  THE SOFTWARE.
 //
 
-#import "FSDemoImage.h"
+#import "FSImageViewer.h"
 
-@implementation FSDemoImage
+@interface FSBasicImage : NSObject<FSImage>
 
-@synthesize URL = _URL;
-@synthesize title = _title;
-@synthesize size = _size;
-@synthesize image = _image;
-@synthesize failed = _failed;
-
-- (id)initWithImageURL:(NSURL *)aURL name:(NSString *)aName image:(UIImage *)aImage {
-    self = [super init];
-    if (self) {
-        _URL = aURL;
-        _title = aName;
-        self.image = aImage;
-
-    }
-    return self;
-}
-
-- (id)initWithImageURL:(NSURL *)aURL name:(NSString *)aName {
-    return [self initWithImageURL:aURL name:aName image:nil];
-}
-
-- (id)initWithImageURL:(NSURL *)aURL {
-    return [self initWithImageURL:aURL name:nil image:nil];
-}
-
-- (id)initWithImage:(UIImage *)aImage {
-    return [self initWithImageURL:nil name:nil image:aImage];
-}
-
+- (id)initWithImageURL:(NSURL *)aURL name:(NSString *)aName image:(UIImage *)aImage;
+- (id)initWithImageURL:(NSURL *)aURL name:(NSString *)aName;
+- (id)initWithImageURL:(NSURL *)aURL;
+- (id)initWithImage:(UIImage *)aImage;
+- (id)initWithImage:(UIImage *)aImage name:(NSString *)aName;
 @end

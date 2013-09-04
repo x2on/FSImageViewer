@@ -23,7 +23,7 @@
 //
 
 #import "FSDemoViewController.h"
-#import "FSDemoImage.h"
+#import "FSBasicImage.h"
 #import "FSBasicImageSource.h"
 
 @interface FSDemoViewController ()
@@ -53,9 +53,9 @@
 
 
 - (IBAction)openGallery {
-    FSDemoImage *firstPhoto = [[FSDemoImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm8.staticflickr.com/7319/9668947331_3112b1fcca_b.jpg"] name:@"Photo by Brian Adamson"];
-    FSDemoImage *secondPhoto = [[FSDemoImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm9.staticflickr.com/8023/6971840814_68614eba26_b.jpg"] name:@"Photo by Ben Fredericson"];
-    FSDemoImage *failingPhoto = [[FSDemoImage alloc] initWithImageURL:[NSURL URLWithString:@"http://example.com/1.jpg"] name:@"Failure image"];
+    FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm8.staticflickr.com/7319/9668947331_3112b1fcca_b.jpg"] name:@"Photo by Brian Adamson"];
+    FSBasicImage *secondPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm9.staticflickr.com/8023/6971840814_68614eba26_b.jpg"] name:@"Photo by Ben Fredericson"];
+    FSBasicImage *failingPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://example.com/1.jpg"] name:@"Failure image"];
 
     FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto, secondPhoto, failingPhoto]];
     self.imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
