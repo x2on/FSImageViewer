@@ -33,10 +33,6 @@
 /// The number of the image objects are stored in the images array.
 @property(assign, nonatomic, readonly) NSInteger numberOfImages;
 
-/// @deprecated: Use object subscription.
-/// @warning DEPRECATED - Use object subscription.
-- (id <FSImage>)imageAtIndex:(NSInteger)index DEPRECATED_ATTRIBUTE;
-
 /// Must return image at the given index - with object subscription you can use it like `imageSource[1];
 /// @param index image index
 /// @return image at given index

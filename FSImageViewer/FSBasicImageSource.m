@@ -40,10 +40,6 @@
     
 }
 
-- (id <FSImage>)imageAtIndex:(NSInteger)index {
-    return _images[index];
-}
-
 - (id <FSImage>)objectAtIndexedSubscript:(NSUInteger)index {
     return _images[index];
 }
