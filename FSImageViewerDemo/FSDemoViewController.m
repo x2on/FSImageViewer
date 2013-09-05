@@ -26,10 +26,6 @@
 #import "FSBasicImage.h"
 #import "FSBasicImageSource.h"
 
-@interface FSDemoViewController ()
-
-@end
-
 @implementation FSDemoViewController
 
 - (id)init {
@@ -50,7 +46,6 @@
         [self openGallery];
     }
 }
-
 
 - (IBAction)openGallery {
     FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm8.staticflickr.com/7319/9668947331_3112b1fcca_b.jpg"] name:@"Photo by Brian Adamson"];

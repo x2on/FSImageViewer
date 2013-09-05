@@ -41,4 +41,4 @@ The demo project uses [CocoaPods](http://cocoapods.org/) for dependency manageme
 Install dependencies:`pod install`
 
 ## System support
-iOS 6.0+ is currently supported.
+iOS 5.0+ is currently supported.
