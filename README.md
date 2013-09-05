@@ -1,5 +1,7 @@
 # FSImageViewer [![Build Status](https://travis-ci.org/x2on/FSImageViewer.png)](https://travis-ci.org/x2on/FSImageViewer) [![Cocoa Pod](http://cocoapod-badges.herokuapp.com/p/FSImageViewer/badge.svg)](http://cocoadocs.org/docsets/FSImageViewer/) [![Cocoa Pod](http://cocoapod-badges.herokuapp.com/v/FSImageViewer/badge.svg)](http://cocoadocs.org/docsets/FSImageViewer/)
 
+![Screenshot](https://raw.github.com/x2on/FSImageViewer/master/screen.png)
+
 FSImageViewer is a photo viewer for iOS.
 
 It's initially based on [EGOPhotoViewer](https://raw.github.com/enormego/PhotoViewer), but complettly refactored to use ARC, [AFNetworking](https://github.com/AFNetworking/AFNetworking) for remote image downloads and [EGOCache 2.0](https://github.com/enormego/EGOCache) for image caching.
@@ -7,7 +9,7 @@ It's initially based on [EGOPhotoViewer](https://raw.github.com/enormego/PhotoVi
 ## Install
 Using [CocoaPods](http://cocoapods.org/):
 
-`pod 'FSImageViewer', :podspec => 'https://raw.github.com/x2on/FSImageViewer/master/FSImageViewer'`
+`pod 'FSImageViewer', '~> 0.9'`
 
 ## Basic usage
 
