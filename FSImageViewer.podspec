@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name         = "FSImageViewer"
-  s.version      = "0.9.1"
+  s.version      = "0.9.2"
   s.summary      = "FSImageViewer is a photo viewer for iOS."
   s.homepage     = "https://github.com/x2on/FSImageViewer"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Felix Schulze" => "code@felixschulze.de" }
   s.source       = { 
     :git => "https://github.com/x2on/FSImageViewer.git",
-    :tag => "0.9.1"
+    :tag => "0.9.2"
   }
 
   s.platform     = :ios, '5.0'
