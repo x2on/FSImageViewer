@@ -427,7 +427,6 @@
     }
 
     if (pageIndex != index && !rotating) {
-        [self setBarsHidden:YES animated:YES];
         pageIndex = index;
         [self setViewState];
 
