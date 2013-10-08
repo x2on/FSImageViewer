@@ -182,7 +182,7 @@
     }
     if ([_imageView.image imageOrientation] != UIImageOrientationUp) {
         CGImageRef imgRef = _imageView.image.CGImage;
-        _imageView.image = [UIImage imageWithCGImage:imgRef scale:1.0 orientation:UIImageOrientationUp];
+        _imageView.image = [UIImage imageWithCGImage:imgRef scale:1.0 orientation:_imageView.image.imageOrientation];
     }
     [self layoutScrollViewAnimated:NO];
 }
