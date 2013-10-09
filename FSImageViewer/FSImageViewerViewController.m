@@ -73,7 +73,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+
 #ifdef __IPHONE_7_0
 	if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
 		self.automaticallyAdjustsScrollViewInsets = NO;
@@ -118,7 +118,7 @@
     [super viewWillAppear:animated];
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        if (self.modalPresentationStyle == UIModalPresentationFullScreen) {
+        if (self.presentingViewController && (self.modalPresentationStyle == UIModalPresentationFullScreen)) {
             UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"done") style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
             self.navigationItem.rightBarButtonItem = doneButton;
         }
