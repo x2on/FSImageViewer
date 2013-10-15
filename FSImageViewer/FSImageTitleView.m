@@ -101,4 +101,9 @@
     hidden = value;
 }
 
+- (BOOL) isHidden
+{
+    return hidden;
+}
+
 @end

@@ -27,5 +27,6 @@
 @property (strong, nonatomic) NSString *text;
 
 - (void)hideView:(BOOL)value;
+- (BOOL)isHidden;
 
 @end
