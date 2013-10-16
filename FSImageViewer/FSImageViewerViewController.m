@@ -333,7 +333,9 @@
         self.scrollView.contentSize = contentSize;
     }
 
-    _titleView.frame = CGRectMake(0.0f, self.view.bounds.size.height - 40.0f, self.view.bounds.size.width, 40.0f);
+    if (![_titleView isHidden]) {
+        _titleView.frame = CGRectMake(0.0f, self.view.bounds.size.height - 40.0f, self.view.bounds.size.width, 40.0f);
+    }
 }
 
 - (void)enqueueImageViewAtIndex:(NSInteger)theIndex {
