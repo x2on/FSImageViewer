@@ -101,8 +101,7 @@
     hidden = value;
 }
 
-- (BOOL) isHidden
-{
+- (BOOL)isHidden {
     return hidden;
 }
 

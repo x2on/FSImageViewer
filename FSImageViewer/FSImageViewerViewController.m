@@ -333,7 +333,7 @@
         self.scrollView.contentSize = contentSize;
     }
 
-    if(![_titleView isHidden]) {
+    if (![_titleView isHidden]) {
         _titleView.frame = CGRectMake(0.0f, self.view.bounds.size.height - 40.0f, self.view.bounds.size.width, 40.0f);
     }
 }
