@@ -9,7 +9,7 @@ It's initially based on [EGOPhotoViewer](https://raw.github.com/enormego/PhotoVi
 ## Install
 Using [CocoaPods](http://cocoapods.org/):
 
-`pod 'FSImageViewer', '~> 1.0.1'`
+`pod 'FSImageViewer', '~> 1.0.2'`
 
 ## Basic usage
 
