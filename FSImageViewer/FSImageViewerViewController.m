@@ -236,8 +236,14 @@
 }
 
 - (NSInteger)centerImageIndex {
-    CGFloat pageWidth = self.scrollView.frame.size.width;
-    return (NSInteger) (floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1);
+    if (self.scrollView) {
+        CGFloat pageWidth = self.scrollView.frame.size.width;
+        NSInteger centerImageIndex = (NSInteger)(floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1);
+        if (centerImageIndex >= 0) {
+            return centerImageIndex;
+        }
+    }
+    return 0;
 }
 
 - (void)setViewState {
