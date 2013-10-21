@@ -391,10 +391,12 @@
             if (offsetX < 0) offsetX = 0;
 
             self.scrollView.contentOffset = CGPointMake(offsetX, offsetY);
+            self.scrollView.scrollEnabled = YES;
         }
 
     } else {
         [self layoutScrollViewAnimated:YES];
+        self.scrollView.scrollEnabled = NO;
     }
 }
 
