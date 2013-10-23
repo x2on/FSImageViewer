@@ -35,6 +35,7 @@
     NSInteger pageIndex;
     BOOL rotating;
     BOOL barsHidden;
+    BOOL statusBarHidden;
     UIBarButtonItem *leftButton;
     UIBarButtonItem *rightButton;
 }
@@ -187,7 +188,17 @@
 #pragma mark - Bar/Caption Methods
 
 - (void)setStatusBarHidden:(BOOL)hidden {
-    [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:UIStatusBarAnimationFade];
+    statusBarHidden = hidden;
+#ifdef __IPHONE_7_0
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
+    } else {
+#endif
+        [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:UIStatusBarAnimationFade];
+#ifdef __IPHONE_7_0
+    }
+#endif
+
 }
 
 - (void)setBarsHidden:(BOOL)hidden animated:(BOOL)animated {
@@ -449,6 +460,10 @@
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
     [self layoutScrollViewSubviews];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return statusBarHidden;
 }
 
 @end
