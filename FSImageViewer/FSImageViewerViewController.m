@@ -120,7 +120,7 @@
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         if (self.presentingViewController && (self.modalPresentationStyle == UIModalPresentationFullScreen)) {
-            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"done") style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
+            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:[self localizedStringForKey:@"done" withDefault:@"Done"] style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
             self.navigationItem.rightBarButtonItem = doneButton;
         }
     }
@@ -269,7 +269,7 @@
 
     NSInteger numberOfImages = [_imageSource numberOfImages];
     if (numberOfImages > 1) {
-        self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"%i of %i", @"imageCounter"), pageIndex + 1, numberOfImages];
+        self.navigationItem.title = [NSString stringWithFormat:@"%i %@ %i", pageIndex + 1, [self localizedStringForKey:@"imageCounter" withDefault:@"of"], numberOfImages];
     } else {
         self.title = @"";
     }
@@ -464,6 +464,28 @@
 
 - (BOOL)prefersStatusBarHidden {
     return statusBarHidden;
+}
+
+#pragma mark - Localization Helper
+- (NSString *)localizedStringForKey:(NSString *)key withDefault:(NSString *)defaultString
+{
+    static NSBundle *bundle = nil;
+    if (bundle == nil)
+    {
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FSImageViewer" ofType:@"bundle"];
+        bundle = [NSBundle bundleWithPath:bundlePath] ?: [NSBundle mainBundle];
+        for (NSString *language in [NSLocale preferredLanguages])
+            {
+                if ([[bundle localizations] containsObject:language])
+                {
+                    bundlePath = [bundle pathForResource:language ofType:@"lproj"];
+                    bundle = [NSBundle bundleWithPath:bundlePath];
+                    break;
+                }
+            }
+        }
+    defaultString = [bundle localizedStringForKey:key value:defaultString table:nil];
+    return [[NSBundle mainBundle] localizedStringForKey:key value:defaultString table:nil];
 }
 
 @end

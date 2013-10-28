@@ -10,6 +10,7 @@
 		5AB0DA258592480FB4099411 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 746D153768E9481F8194ECCE /* libPods.a */; };
 		FD0FEFBB17D77F1C00470082 /* FSBasicImageSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0FEFBA17D77F1C00470082 /* FSBasicImageSource.m */; };
 		FD0FEFBF17D781EF00470082 /* FSBasicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0FEFBE17D781EF00470082 /* FSBasicImage.m */; };
+		FD37CEC0181EBA5700606D81 /* FSImageViewer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FD37CEBF181EBA5700606D81 /* FSImageViewer.bundle */; };
 		FD89E29417CB99D900A41D91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E29317CB99D900A41D91 /* Foundation.framework */; };
 		FD89E2A717CB99F000A41D91 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E2A617CB99F000A41D91 /* UIKit.framework */; };
 		FD89E2A817CB99F000A41D91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E29317CB99D900A41D91 /* Foundation.framework */; };
@@ -63,6 +64,13 @@
 		FD0FEFBA17D77F1C00470082 /* FSBasicImageSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBasicImageSource.m; sourceTree = "<group>"; };
 		FD0FEFBD17D781EF00470082 /* FSBasicImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBasicImage.h; sourceTree = "<group>"; };
 		FD0FEFBE17D781EF00470082 /* FSBasicImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBasicImage.m; sourceTree = "<group>"; };
+		FD37CEBF181EBA5700606D81 /* FSImageViewer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FSImageViewer.bundle; sourceTree = SOURCE_ROOT; };
+		FD37CEC1181EBCDC00606D81 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FD37CEC2181EBCE000606D81 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FD37CEC3181EBCEC00606D81 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FD37CEC4181EBCF400606D81 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FD37CEC5181EC01700606D81 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FD37CEC6181EC01E00606D81 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FD89E29017CB99D900A41D91 /* libFSImageViewer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFSImageViewer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD89E29317CB99D900A41D91 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FD89E29717CB99D900A41D91 /* FSImageViewer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSImageViewer-Prefix.pch"; sourceTree = "<group>"; };
@@ -184,6 +192,7 @@
 				FD89E2CF17CB9A0E00A41D91 /* FSImageViewerViewController.m */,
 				FD89E2D017CB9A0E00A41D91 /* FSPlaceholderImages.h */,
 				FD89E2D117CB9A0E00A41D91 /* FSPlaceholderImages.m */,
+				FD37CEBF181EBA5700606D81 /* FSImageViewer.bundle */,
 				FD89E29617CB99D900A41D91 /* Supporting Files */,
 			);
 			path = FSImageViewer;
@@ -279,6 +288,12 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
+				it,
+				es,
+				fr,
+				nl,
+				ru,
 			);
 			mainGroup = FD89E28717CB99D900A41D91;
 			productRefGroup = FD89E29117CB99D900A41D91 /* Products */;
@@ -300,6 +315,7 @@
 				FD89E2B817CB99F000A41D91 /* Default.png in Resources */,
 				FD89E2BA17CB99F000A41D91 /* Default@2x.png in Resources */,
 				FD89E2BC17CB99F000A41D91 /* Default-568h@2x.png in Resources */,
+				FD37CEC0181EBA5700606D81 /* FSImageViewer.bundle in Resources */,
 				FD89E2DE17CB9A4400A41D91 /* FSDemoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +396,12 @@
 			isa = PBXVariantGroup;
 			children = (
 				FD89E2AF17CB99F000A41D91 /* en */,
+				FD37CEC1181EBCDC00606D81 /* it */,
+				FD37CEC2181EBCE000606D81 /* es */,
+				FD37CEC3181EBCEC00606D81 /* fr */,
+				FD37CEC4181EBCF400606D81 /* nl */,
+				FD37CEC5181EC01700606D81 /* ru */,
+				FD37CEC6181EC01E00606D81 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
