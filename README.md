@@ -32,6 +32,13 @@ FSImageViewerViewController *imageViewController = [[FSImageViewerViewController
 [self.navigationController pushViewController:imageViewController animated:YES];
 ```
 
+If you like to use a modal view controller:
+```objc
+FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
+UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
+[self.navigationController presentViewController:navigationController animated:YES completion:nil];
+```
+
 ## Advanced usage
 
 You can also create your own image class by implementing the `FSImage` protocol and your own datasource by implementing the `FSImageSource` protocol.

@@ -56,7 +56,8 @@
     self.imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [self.navigationController presentViewController:_imageViewController animated:YES completion:nil];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:_imageViewController];
+        [self.navigationController presentViewController:navigationController animated:YES completion:nil];
     }
     else {
         [self.navigationController pushViewController:_imageViewController animated:YES];

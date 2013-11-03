@@ -36,6 +36,7 @@
     BOOL rotating;
     BOOL barsHidden;
     BOOL statusBarHidden;
+    UIBarButtonItem *shareButton;
 }
 
 - (id)initWithImageSource:(id <FSImageSource>)aImageSource {
@@ -53,6 +54,8 @@
 
         _imageSource = aImageSource;
         pageIndex = imageIndex;
+        
+        self.sharingDisabled = NO;
     }
     return self;
 }
@@ -116,10 +119,18 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        if (self.presentingViewController && (self.modalPresentationStyle == UIModalPresentationFullScreen)) {
-            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:[self localizedStringForKey:@"done" withDefault:@"Done"] style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
-            self.navigationItem.rightBarButtonItem = doneButton;
+    shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share:)];
+    shareButton.enabled = NO;
+    if (self.presentingViewController && (self.modalPresentationStyle == UIModalPresentationFullScreen)) {
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:[self localizedStringForKey:@"done" withDefault:@"Done"] style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
+        self.navigationItem.rightBarButtonItem = doneButton;
+        if (!_sharingDisabled) {
+            self.navigationItem.leftBarButtonItem = shareButton;
+        }
+    }
+    else {
+        if (!_sharingDisabled) {
+            self.navigationItem.rightBarButtonItem = shareButton;
         }
     }
 
@@ -177,6 +188,26 @@
 
 - (void)done:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)share:(id)sender {
+    if ([UIActivityViewController class]) {
+        id<FSImage> currentImage = _imageSource[[self currentImageIndex]];
+        NSAssert(currentImage.image, @"The image must be loaded to share.");
+        if (currentImage.image) {
+            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[currentImage.image] applicationActivities:nil];
+            [self presentViewController:controller animated:YES completion:nil];
+        }
+    }
+}
+
+- (void) setSharingDisabled:(BOOL)sharingDisabled {
+    if (![UIActivityViewController class]) {
+        _sharingDisabled = YES;
+    }
+    else {
+        _sharingDisabled = sharingDisabled;
+    }
 }
 
 - (NSInteger)currentImageIndex {
@@ -239,6 +270,10 @@
             if (barsHidden) {
                 [self setBarsHidden:NO animated:YES];
             }
+            shareButton.enabled = NO;
+        }
+        else {
+            shareButton.enabled = YES;
         }
         [self setViewState];
     }
@@ -286,6 +321,12 @@
 
         if (_imageSource[pageIndex].failed) {
             [self setBarsHidden:NO animated:YES];
+            shareButton.enabled = NO;
+        }
+        else {
+            if (pageIndex == [self currentImageIndex] && _imageSource[pageIndex].image) {
+                shareButton.enabled = YES;
+            }
         }
 
         if (index + 1 < [self.imageSource numberOfImages] && (NSNull *) [_imageViews objectAtIndex:(NSUInteger) (index + 1)] != [NSNull null]) {

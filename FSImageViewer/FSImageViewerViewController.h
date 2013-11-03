@@ -44,6 +44,9 @@
 /// Main scrollView
 @property(strong, nonatomic) UIScrollView *scrollView;
 
+/// Disable image sharing
+@property(assign, nonatomic, getter = isSharingDisabled) BOOL sharingDisabled;
+
 /// Current index of the image displayed
 /// @return current index of the image displayed
 - (NSInteger)currentImageIndex;
