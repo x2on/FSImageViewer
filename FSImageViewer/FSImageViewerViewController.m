@@ -36,8 +36,6 @@
     BOOL rotating;
     BOOL barsHidden;
     BOOL statusBarHidden;
-    UIBarButtonItem *leftButton;
-    UIBarButtonItem *rightButton;
 }
 
 - (id)initWithImageSource:(id <FSImageSource>)aImageSource {
@@ -258,14 +256,6 @@
 }
 
 - (void)setViewState {
-
-    if (leftButton) {
-        leftButton.enabled = !(pageIndex - 1 < 0);
-    }
-
-    if (rightButton) {
-        rightButton.enabled = !(pageIndex + 1 >= [_imageSource numberOfImages]);
-    }
 
     NSInteger numberOfImages = [_imageSource numberOfImages];
     if (numberOfImages > 1) {
