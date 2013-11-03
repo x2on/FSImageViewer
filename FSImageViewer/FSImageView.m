@@ -154,6 +154,7 @@
         else {
             [[FSImageLoader sharedInstance] loadImageForURL:_image.URL image:^(UIImage *image, NSError *error) {
                 if (!error) {
+                    _image.image = image;
                     [self setupImageViewWithImage:image];
                 }
                 else {
