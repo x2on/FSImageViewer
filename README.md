@@ -1,4 +1,4 @@
-# FSImageViewer [![Build Status](https://travis-ci.org/x2on/FSImageViewer.png)](https://travis-ci.org/x2on/FSImageViewer) [![Cocoa Pod](https://cocoapod-badges.herokuapp.com/p/FSImageViewer/badge.svg)](http://cocoadocs.org/docsets/FSImageViewer/) [![Cocoa Pod](https://cocoapod-badges.herokuapp.com/v/FSImageViewer/badge.svg)](http://cocoadocs.org/docsets/FSImageViewer/)
+# FSImageViewer [![Build Status](https://travis-ci.org/x2on/FSImageViewer.png)](https://travis-ci.org/x2on/FSImageViewer) [![Cocoa Pod](https://cocoapod-badges.herokuapp.com/p/FSImageViewer/badge.svg)](http://cocoadocs.org/docsets/FSImageViewer/) [![Cocoa Pod](https://cocoapod-badges.herokuapp.com/v/FSImageViewer/badge.svg)](http://cocoadocs.org/docsets/FSImageViewer/) [![License](https://go-shields.herokuapp.com/license-MIT-blue.png)](http://opensource.org/licenses/MIT)
 
 ![Screenshot](https://raw.github.com/x2on/FSImageViewer/master/screen.png)
 
