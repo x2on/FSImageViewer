@@ -1,10 +1,10 @@
 language: objective-c
 before_install: 
-	- echo "Update CocoaPods"
-	- pod --version
-	- gem install cocoapods
-	- pod --version
+ - echo "Update CocoaPods"
+ - pod --version
+ - gem install cocoapods
+ - pod --version
 script: 
-	- xctool -workspace FSImageViewer.xcworkspace -scheme FSImageViewer -sdk iphonesimulator clean build
-	- pod --version
-	- pod spec lint FSImageViewer.podspec
+ - xctool -workspace FSImageViewer.xcworkspace -scheme FSImageViewer -sdk iphonesimulator clean build
+ - pod --version
+ - pod spec lint FSImageViewer.podspec
