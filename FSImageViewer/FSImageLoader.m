@@ -24,7 +24,7 @@
 
 #import <EGOCache/EGOCache.h>
 #import "FSImageLoader.h"
-#import "AFImageRequestOperation.h"
+#import "AFHTTPRequestOperation.h"
 
 @implementation FSImageLoader {
     NSMutableArray *runningRequests;
@@ -54,13 +54,13 @@
 }
 
 - (void)cancelAllRequests {
-    for (AFImageRequestOperation *imageRequestOperation in runningRequests) {
+    for (AFHTTPRequestOperation *imageRequestOperation in runningRequests) {
         [imageRequestOperation cancel];
     }
 }
 
 - (void)cancelRequestForUrl:(NSURL *)aURL {
-    for (AFImageRequestOperation *imageRequestOperation in runningRequests) {
+    for (AFHTTPRequestOperation *imageRequestOperation in runningRequests) {
         if ([imageRequestOperation.request.URL isEqual:aURL]) {
             [imageRequestOperation cancel];
             break;
@@ -89,10 +89,11 @@
         [self cancelRequestForUrl:aURL];
 
         NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:aURL cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:_timeoutInterval];
-        AFImageRequestOperation *imageRequestOperation = [[AFImageRequestOperation alloc] initWithRequest:urlRequest];
+        AFHTTPRequestOperation *imageRequestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
+        imageRequestOperation.responseSerializer = [AFImageResponseSerializer serializer];
         [runningRequests addObject:imageRequestOperation];
+        __weak AFHTTPRequestOperation *imageRequestOperationForBlock = imageRequestOperation;
 
-        __weak AFImageRequestOperation *imageRequestOperationForBlock = imageRequestOperation;
         [imageRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             UIImage *image = responseObject;
             [[EGOCache globalCache] setImage:image forKey:cacheKey];
@@ -106,7 +107,6 @@
             }
             [runningRequests removeObject:imageRequestOperationForBlock];
         }];
-
         [imageRequestOperation start];
     }
 }

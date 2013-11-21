@@ -1,3 +1,9 @@
 language: objective-c
-before_install: scripts/install-travis.sh
-script: scripts/build-travis.sh
+before_install: 
+ - echo "Update CocoaPods"
+ - gem install cocoapods
+ - pod --version
+script: 
+ - xctool -workspace FSImageViewer.xcworkspace -scheme FSImageViewer -sdk iphonesimulator clean build
+ - pod --version
+ - pod spec lint FSImageViewer.podspec
