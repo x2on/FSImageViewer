@@ -1,7 +1,6 @@
 language: objective-c
 before_install: 
  - echo "Update CocoaPods"
- - pod --version
  - gem install cocoapods
  - pod --version
 script: 
