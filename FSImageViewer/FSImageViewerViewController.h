@@ -47,6 +47,9 @@
 /// Disable image sharing
 @property(assign, nonatomic, getter = isSharingDisabled) BOOL sharingDisabled;
 
+/// Adjust font size to fit width - Default is NO
+@property(assign, nonatomic, getter = isAdjustsFontSizeToFitWidth) BOOL adjustsFontSizeToFitWidth;
+
 /// Current index of the image displayed
 /// @return current index of the image displayed
 - (NSInteger)currentImageIndex;

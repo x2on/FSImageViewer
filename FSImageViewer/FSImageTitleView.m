@@ -75,6 +75,11 @@
     }
 }
 
+- (void) setAdjustsFontSizeToFitWidth:(BOOL)adjustsFontSizeToFitWidth {
+    textLabel.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth;
+    _adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth;
+}
+
 - (void)hideView:(BOOL)value {
     if (hidden == value) {
         return;

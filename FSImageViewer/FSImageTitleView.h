@@ -25,6 +25,7 @@
 @interface FSImageTitleView : UIView
 
 @property (strong, nonatomic) NSString *text;
+@property (assign, nonatomic) BOOL adjustsFontSizeToFitWidth;
 
 - (void)hideView:(BOOL)value;
 - (BOOL)isHidden;
