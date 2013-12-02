@@ -105,6 +105,7 @@
 
     if (!_titleView) {
         self.titleView = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 1)];
+        _titleView.adjustsFontSizeToFitWidth = [self isAdjustsFontSizeToFitWidth];
         [self.view addSubview:_titleView];
     }
 
