@@ -177,7 +177,8 @@
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [self setupScrollViewContentSize];
     [self moveToImageAtIndex:pageIndex animated:NO];
-    [_scrollView scrollRectToVisible:((FSImageView *) [_imageViews objectAtIndex:(NSUInteger) pageIndex]).frame animated:YES];
+    if (pageIndex < [_imageViews count])
+        [_scrollView scrollRectToVisible:((FSImageView *) [_imageViews objectAtIndex:(NSUInteger) pageIndex]).frame animated:YES];
 
     for (FSImageView *view in self.imageViews) {
         if ([view isKindOfClass:[FSImageView class]]) {
