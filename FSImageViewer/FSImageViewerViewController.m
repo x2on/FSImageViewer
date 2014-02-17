@@ -267,7 +267,13 @@
         return;
     }
 
-    if ([[notification object][@"image"] isEqual:_imageSource[[self centerImageIndex]]]) {
+    NSInteger centerIndex = [self centerImageIndex];
+    if (centerIndex <= _imageSource.numberOfImages) {
+        NSAssert(centerIndex <= _imageSource.numberOfImages, @"centerIndex is out of bounds");
+        return;
+    }
+    
+    if ([[notification object][@"image"] isEqual:_imageSource[centerIndex]]) {
         if ([[notification object][@"failed"] boolValue]) {
             if (barsHidden) {
                 [self setBarsHidden:NO animated:YES];
