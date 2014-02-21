@@ -269,7 +269,7 @@
 
     NSInteger centerIndex = [self centerImageIndex];
     if (centerIndex >= _imageSource.numberOfImages) {
-        NSAssert(centerIndex <= _imageSource.numberOfImages, @"centerIndex is out of bounds");
+        NSAssert(centerIndex < _imageSource.numberOfImages, @"centerIndex is out of bounds");
         return;
     }
     
