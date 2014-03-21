@@ -25,6 +25,18 @@
 #import "FSImageViewer.h"
 #import "FSImageSource.h"
 
+@class FSImageViewerViewController;
+
+// Optional Delegate for getting current presented image index.
+@protocol FSImageViewerViewControllerDelegate <NSObject>
+
+@optional
+
+// Called if moved to the image at the given index.
+- (void)imageViewerViewController:(FSImageViewerViewController *)imageViewerViewController didMoveToImageAtIndex:(NSInteger)index;
+
+@end
+
 /// FSImageViewerViewController is an UIViewController which can present images.
 @interface FSImageViewerViewController : UIViewController <UIScrollViewDelegate>
 
@@ -37,6 +49,9 @@
 
 /// Image data source
 @property(strong, nonatomic, readonly) id <FSImageSource> imageSource;
+
+/// Optional Delegate
+@property(weak, nonatomic) id<FSImageViewerViewControllerDelegate> delegate;
 
 /// FSImageView array
 @property(strong, nonatomic) NSMutableArray *imageViews;

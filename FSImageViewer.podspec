@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "FSImageViewer"
-  s.version      = "2.1.1"
+  s.version      = "2.2"
   s.summary      = "FSImageViewer is a photo viewer for iOS."
   s.homepage     = "https://github.com/x2on/FSImageViewer"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }

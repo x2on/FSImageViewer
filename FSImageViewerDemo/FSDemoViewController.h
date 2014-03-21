@@ -23,10 +23,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSImageViewerViewController.h"
 
-@class FSImageViewerViewController;
-
-@interface FSDemoViewController : UIViewController
+@interface FSDemoViewController : UIViewController<FSImageViewerViewControllerDelegate>
 
 @property(strong, nonatomic) FSImageViewerViewController *imageViewController;
 

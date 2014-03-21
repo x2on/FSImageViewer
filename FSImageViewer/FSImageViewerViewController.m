@@ -33,6 +33,7 @@
 
 @implementation FSImageViewerViewController {
     NSInteger pageIndex;
+    NSInteger currentPageIndex;
     BOOL rotating;
     BOOL barsHidden;
     BOOL statusBarHidden;
@@ -54,6 +55,7 @@
 
         _imageSource = aImageSource;
         pageIndex = imageIndex;
+        currentPageIndex = imageIndex;
         
         self.sharingDisabled = NO;
     }
@@ -203,7 +205,7 @@
     }
 }
 
-- (void) setSharingDisabled:(BOOL)sharingDisabled {
+- (void)setSharingDisabled:(BOOL)sharingDisabled {
     if (![UIActivityViewController class]) {
         _sharingDisabled = YES;
     }
@@ -302,7 +304,7 @@
 
     NSInteger numberOfImages = [_imageSource numberOfImages];
     if (numberOfImages > 1) {
-        self.navigationItem.title = [NSString stringWithFormat:@"%i %@ %i", pageIndex + 1, [self localizedStringForKey:@"imageCounter" withDefault:@"of"], numberOfImages];
+        self.navigationItem.title = [NSString stringWithFormat:@"%i %@ %li", pageIndex + 1, [self localizedStringForKey:@"imageCounter" withDefault:@"of"], (long)numberOfImages];
     } else {
         self.title = @"";
     }
@@ -315,8 +317,11 @@
 
 - (void)moveToImageAtIndex:(NSInteger)index animated:(BOOL)animated {
     if (index < [self.imageSource numberOfImages] && index >= 0) {
-
+        
+        BOOL sameIndex = (currentPageIndex == index);
         pageIndex = index;
+        currentPageIndex = index;
+        
         [self setViewState];
 
         [self enqueueImageViewAtIndex:index];
@@ -334,6 +339,9 @@
         else {
             if (pageIndex == [self currentImageIndex] && _imageSource[pageIndex].image) {
                 shareButton.enabled = YES;
+                if (!sameIndex && [_delegate respondsToSelector:@selector(imageViewerViewController:didMoveToImageAtIndex:)]) {
+                    [_delegate imageViewerViewController:self didMoveToImageAtIndex:pageIndex];
+                }
             }
         }
 
