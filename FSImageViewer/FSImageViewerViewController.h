@@ -35,6 +35,9 @@
 // Called if moved to the image at the given index.
 - (void)imageViewerViewController:(FSImageViewerViewController *)imageViewerViewController didMoveToImageAtIndex:(NSInteger)index;
 
+- (void)imageViewerViewController:(FSImageViewerViewController *)imageViewerViewController willDismissViewControllerAnimated:(BOOL)animated;
+- (void)imageViewerViewController:(FSImageViewerViewController *)imageViewerViewController didDismissViewControllerAnimated:(BOOL)animated;
+
 @end
 
 /// FSImageViewerViewController is an UIViewController which can present images.
