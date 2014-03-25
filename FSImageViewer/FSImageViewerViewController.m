@@ -191,7 +191,15 @@
 }
 
 - (void)done:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+	if ([_delegate respondsToSelector:@selector(imageViewerViewController:willDismissViewControllerAnimated:)]) {
+		[_delegate imageViewerViewController:self willDismissViewControllerAnimated:YES];
+	}
+	
+    [self dismissViewControllerAnimated:YES completion:^{
+		if ([_delegate respondsToSelector:@selector(imageViewerViewController:didDismissViewControllerAnimated:)]) {
+			[_delegate imageViewerViewController:self didDismissViewControllerAnimated:YES];
+		}
+	}];
 }
 
 - (void)share:(id)sender {
