@@ -54,6 +54,11 @@
 
     FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto, secondPhoto, failingPhoto]];
     self.imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
+    
+    // Overriding the background color (if you'd like)
+    self.imageViewController.backgroundColorVisible = [UIColor whiteColor];
+    self.imageViewController.backgroundColorHidden = [UIColor blackColor];
+    
     _imageViewController.delegate = self;
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
