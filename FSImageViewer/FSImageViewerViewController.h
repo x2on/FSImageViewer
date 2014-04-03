@@ -68,6 +68,9 @@
 /// Adjust font size to fit width - Default is NO
 @property(assign, nonatomic, getter = isAdjustsFontSizeToFitWidth) BOOL adjustsFontSizeToFitWidth;
 
+@property(strong, nonatomic) UIColor *backgroundColorHidden;
+@property(strong, nonatomic) UIColor *backgroundColorVisible;
+
 /// Current index of the image displayed
 /// @return current index of the image displayed
 - (NSInteger)currentImageIndex;
