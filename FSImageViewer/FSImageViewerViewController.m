@@ -27,8 +27,6 @@
 
 @interface FSImageViewerViewController ()
 
-@property(strong, nonatomic) FSImageTitleView *titleView;
-
 @end
 
 @implementation FSImageViewerViewController {
@@ -72,7 +70,7 @@
     self.imageViews = nil;
     _scrollView.delegate = nil;
     self.scrollView = nil;
-    _titleView = nil;
+    self.titleView = nil;
 }
 
 - (void)viewDidLoad {
@@ -105,10 +103,8 @@
         [self.view addSubview:_scrollView];
     }
 
-    if (!_titleView) {
+    if (!self.titleView) {
         self.titleView = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 1)];
-        _titleView.adjustsFontSizeToFitWidth = [self isAdjustsFontSizeToFitWidth];
-        [self.view addSubview:_titleView];
     }
 
     //  load FSImageView lazy
@@ -117,6 +113,14 @@
         [views addObject:[NSNull null]];
     }
     self.imageViews = views;
+}
+
+- (void) setTitleView:(UIView<FSTitleView> *)titleView {
+    if(self.titleView) {
+        [self.titleView removeFromSuperview];
+    }
+    _titleView = titleView;
+    [self.view addSubview:_titleView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -261,7 +265,7 @@
         }
     }];
 
-    [_titleView hideView:hidden];
+    [self.titleView hideView:hidden];
 
     barsHidden = hidden;
 }
@@ -317,8 +321,8 @@
         self.title = @"";
     }
 
-    if (_titleView) {
-        _titleView.text = _imageSource[pageIndex].title;
+    if (self.titleView) {
+        [self.titleView updateMetadata:_imageSource[pageIndex].title index:pageIndex total:_imageSource.numberOfImages];
     }
 
 }
@@ -405,8 +409,8 @@
         self.scrollView.contentSize = contentSize;
     }
 
-    if (![_titleView isHidden]) {
-        _titleView.frame = CGRectMake(0.0f, self.view.bounds.size.height - 40.0f, self.view.bounds.size.width, 40.0f);
+    if (![self.titleView isHidden]) {
+        [self.titleView adjustTextViewSize:self.view.bounds];
     }
 }
 

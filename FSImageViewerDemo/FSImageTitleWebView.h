@@ -1,4 +1,4 @@
-//  FSImageViewerDemo
+//  FSImageViewer
 //
 //  Created by Felix Schulze on 8/26/2013.
 //  Copyright 2013 Felix Schulze. All rights reserved.
@@ -21,16 +21,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
+#import "FSTitleView.h"
 
-#import <UIKit/UIKit.h>
-#import "FSImageViewerViewController.h"
+@interface FSImageTitleWebView : UIView<FSTitleView, UIWebViewDelegate>
 
-@interface FSDemoViewController : UIViewController<FSImageViewerViewControllerDelegate>
-
-@property(strong, nonatomic) FSImageViewerViewController *imageViewController;
-
-- (IBAction)openGallery;
-
-- (IBAction)openGalleryWebView;
+@property (strong, nonatomic) NSString *html;
+@property (strong, nonatomic) UIWebView *webView;
 
 @end

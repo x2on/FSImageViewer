@@ -25,6 +25,7 @@
 #import "FSDemoViewController.h"
 #import "FSBasicImage.h"
 #import "FSBasicImageSource.h"
+#import "FSImageTitleWebView.h"
 
 @implementation FSDemoViewController
 
@@ -41,18 +42,12 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
-    if (!_imageViewController) {
-        [self openGallery];
-    }
 }
 
 - (IBAction)openGallery {
-    FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm8.staticflickr.com/7319/9668947331_3112b1fcca_b.jpg"] name:@"Photo by Brian Adamson"];
-    FSBasicImage *secondPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm9.staticflickr.com/8023/6971840814_68614eba26_b.jpg"] name:@"Photo by Ben Fredericson"];
-    FSBasicImage *failingPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://example.com/1.jpg"] name:@"Failure image"];
 
-    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto, secondPhoto, failingPhoto]];
+    NSArray *images = [self getImagesWithHtml:NO];
+    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:images];
     self.imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
     _imageViewController.delegate = self;
 
@@ -63,6 +58,47 @@
     else {
         [self.navigationController pushViewController:_imageViewController animated:YES];
     }
+}
+
+
+
+- (IBAction)openGalleryWebView {
+    NSArray *images = [self getImagesWithHtml:YES];
+    
+    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:images];
+    self.imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
+
+    self.imageViewController.titleView = [[FSImageTitleWebView alloc] initWithFrame:CGRectMake(0, self.imageViewController.view.frame.size.height, self.imageViewController.view.frame.size.width, 1)];
+
+    _imageViewController.delegate = self;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:_imageViewController];
+        [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+    }
+    else {
+        [self.navigationController pushViewController:_imageViewController animated:YES];
+    }
+    
+}
+
+- (NSArray*) getImagesWithHtml:(BOOL)useHtml {
+    FSBasicImage *firstPhoto;
+    FSBasicImage *secondPhoto;
+    FSBasicImage *failingPhoto;
+    
+    if(useHtml) {
+        firstPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm8.staticflickr.com/7319/9668947331_3112b1fcca_b.jpg"] name:@"Photo by <strong>Brian Adamson</strong> If you want to put a line break at a particular place, you can use the <BR> command, or, for a paragraph break, the <P> command, which will insert a blank line. The heading command (<4></4>) puts a blank line above and below the heading text."];
+        secondPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm9.staticflickr.com/8023/6971840814_68614eba26_b.jpg"] name:@"Photo by <a href=\"https://www.flickr.com/people/xjrlokix/\">Ben Fredericson</a>"];
+        failingPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://example.com/1.jpg"] name:@"Failure image"];
+    } else {
+        firstPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm8.staticflickr.com/7319/9668947331_3112b1fcca_b.jpg"] name:@"Photo by Brian Adamson"];
+        secondPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm9.staticflickr.com/8023/6971840814_68614eba26_b.jpg"] name:@"Photo by Ben Fredericson"];
+        failingPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://example.com/1.jpg"] name:@"Failure image"];
+    }
+    
+    return @[firstPhoto, secondPhoto, failingPhoto];
+    
 }
 
 - (void)imageViewerViewController:(FSImageViewerViewController *)imageViewerViewController didMoveToImageAtIndex:(NSInteger)index {
