@@ -77,7 +77,7 @@
                       "</style> \n"
                       "</head> \n"
                       "<body>%@<br/>(%d of %d)</body> \n"
-                      "</html>",  text, index, total];
+                      "</html>",  text, index + 1, total];
     
     self.html = html;
 }
