@@ -118,23 +118,10 @@
 
 #pragma mark UIWebViewDelegate
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    NSLog(@"Loading: %@", [request URL]);
-    return YES;
-}
-
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"didFinish: %@; stillLoading:%@", [[webView request]URL],
-          (webView.loading?@"NO":@"YES"));
     [self adjustWebViewHeight];
 }
 
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    NSLog(@"didFail: %@; stillLoading:%@", [[webView request]URL],
-          (webView.loading?@"NO":@"YES"));
-}
 
 - (void) adjustWebViewHeight {
 
