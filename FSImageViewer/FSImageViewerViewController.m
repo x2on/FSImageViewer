@@ -103,8 +103,8 @@
         [self.view addSubview:_scrollView];
     }
 
-    if (!self.titleView) {
-        self.titleView = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 1)];
+    if (!_titleView) {
+        _titleView = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 1)];
     }
 
     //  load FSImageView lazy
@@ -116,8 +116,8 @@
 }
 
 - (void) setTitleView:(UIView<FSTitleView> *)titleView {
-    if(self.titleView) {
-        [self.titleView removeFromSuperview];
+    if(_titleView) {
+        [_titleView removeFromSuperview];
     }
     _titleView = titleView;
     [self.view addSubview:_titleView];
@@ -265,7 +265,7 @@
         }
     }];
 
-    [self.titleView hideView:hidden];
+    [_titleView hideView:hidden];
 
     barsHidden = hidden;
 }
@@ -321,8 +321,8 @@
         self.title = @"";
     }
 
-    if (self.titleView) {
-        [self.titleView updateMetadata:_imageSource[pageIndex].title index:pageIndex total:_imageSource.numberOfImages];
+    if (_titleView) {
+        [_titleView updateMetadata:_imageSource[pageIndex].title index:pageIndex total:_imageSource.numberOfImages];
     }
 
 }
@@ -409,8 +409,8 @@
         self.scrollView.contentSize = contentSize;
     }
 
-    if (![self.titleView isHidden]) {
-        [self.titleView adjustTextViewSize:self.view.bounds];
+    if (![_titleView isHidden]) {
+        [_titleView adjustTextViewSize:self.view.bounds];
     }
 }
 
