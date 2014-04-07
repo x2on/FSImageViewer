@@ -311,7 +311,7 @@
 
 - (void)setViewState {
 
-    if(self.showNumberOfItemsInTitle) {
+    if(_showNumberOfItemsInTitle) {
         NSInteger numberOfImages = [_imageSource numberOfImages];
         if (numberOfImages > 1) {
             self.navigationItem.title = [NSString stringWithFormat:@"%i %@ %li", pageIndex + 1, [self localizedStringForKey:@"imageCounter" withDefault:@"of"], (long)numberOfImages];
