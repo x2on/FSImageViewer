@@ -62,6 +62,9 @@
 /// Main scrollView
 @property(strong, nonatomic) UIScrollView *scrollView;
 
+/// Display a "x of y" images in the navigation title - Default is YES
+@property(assign, nonatomic) BOOL showNumberOfItemsInTitle;
+
 /// Disable image sharing
 @property(assign, nonatomic, getter = isSharingDisabled) BOOL sharingDisabled;
 
