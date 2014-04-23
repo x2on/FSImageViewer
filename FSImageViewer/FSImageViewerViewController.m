@@ -254,7 +254,7 @@
     [self.navigationController setNavigationBarHidden:hidden animated:animated];
 
     [UIView animateWithDuration:0.3 animations:^{
-        UIColor *backgroundColor = hidden ? self.backgroundColorHidden : self.backgroundColorVisible;
+        UIColor *backgroundColor = hidden ? _backgroundColorHidden : _backgroundColorVisible;
         self.view.backgroundColor = backgroundColor;
         self.scrollView.backgroundColor = backgroundColor;
         for (FSImageView *imageView in _imageViews) {
@@ -464,7 +464,7 @@
 
     if (imageView == nil || (NSNull *) imageView == [NSNull null]) {
         imageView = [[FSImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _scrollView.bounds.size.width, _scrollView.bounds.size.height)];
-        UIColor *backgroundColor = barsHidden ? self.backgroundColorHidden : self.backgroundColorVisible;
+        UIColor *backgroundColor = barsHidden ? _backgroundColorHidden : _backgroundColorVisible;
         [imageView changeBackgroundColor:backgroundColor];
         [_imageViews replaceObjectAtIndex:(NSUInteger) page withObject:imageView];
     }
