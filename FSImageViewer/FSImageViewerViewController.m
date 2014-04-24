@@ -104,7 +104,8 @@
     }
 
     if (!_titleView) {
-        _titleView = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 1)];
+        FSImageTitleView *titleView = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 1)];
+        [self setTitleView:titleView];
     }
 
     //  load FSImageView lazy
