@@ -21,11 +21,13 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-#import "FSTitleView.h"
 
-@interface FSImageTitleView : UIView<FSTitleView>
+/// FSTitleView represents an abstract UIView with a title and the image object.
+@protocol FSTitleView <NSObject>
 
-@property (strong, nonatomic) NSString *text;
-@property (assign, nonatomic) BOOL adjustsFontSizeToFitWidth;
+- (void)updateMetadata:(NSString*)text index:(NSInteger)index total:(NSInteger)total;
+- (void)hideView:(BOOL)value;
+- (BOOL)isHidden;
+- (void)adjustTextViewSize:(CGRect)imageViewControllerBounds;
 
 @end

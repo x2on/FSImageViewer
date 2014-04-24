@@ -58,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		589F82D818EDE791007F654A /* FSTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTitleView.h; sourceTree = "<group>"; };
 		746D153768E9481F8194ECCE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D07532210640A9B5D7DCD1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		FD0FEFB917D77F1C00470082 /* FSBasicImageSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBasicImageSource.h; sourceTree = "<group>"; };
@@ -173,26 +174,27 @@
 		FD89E29517CB99D900A41D91 /* FSImageViewer */ = {
 			isa = PBXGroup;
 			children = (
-				FDD96CE117CB9ADC00B66931 /* FSImageViewer.h */,
-				FD89E2C017CB9A0700A41D91 /* FSImage.h */,
 				FD0FEFBD17D781EF00470082 /* FSBasicImage.h */,
 				FD0FEFBE17D781EF00470082 /* FSBasicImage.m */,
+				FD0FEFB917D77F1C00470082 /* FSBasicImageSource.h */,
+				FD0FEFBA17D77F1C00470082 /* FSBasicImageSource.m */,
+				FD89E2C017CB9A0700A41D91 /* FSImage.h */,
 				FD89E2C117CB9A0700A41D91 /* FSImageLoader.h */,
 				FD89E2C217CB9A0700A41D91 /* FSImageLoader.m */,
 				FD89E2C317CB9A0700A41D91 /* FSImageScrollView.h */,
 				FD89E2C417CB9A0700A41D91 /* FSImageScrollView.m */,
 				FD89E2C517CB9A0700A41D91 /* FSImageSource.h */,
-				FD0FEFB917D77F1C00470082 /* FSBasicImageSource.h */,
-				FD0FEFBA17D77F1C00470082 /* FSBasicImageSource.m */,
 				FD89E2C617CB9A0700A41D91 /* FSImageTitleView.h */,
 				FD89E2C717CB9A0700A41D91 /* FSImageTitleView.m */,
 				FD89E2C817CB9A0700A41D91 /* FSImageView.h */,
 				FD89E2C917CB9A0700A41D91 /* FSImageView.m */,
+				FD37CEBF181EBA5700606D81 /* FSImageViewer.bundle */,
+				FDD96CE117CB9ADC00B66931 /* FSImageViewer.h */,
 				FD89E2CE17CB9A0E00A41D91 /* FSImageViewerViewController.h */,
 				FD89E2CF17CB9A0E00A41D91 /* FSImageViewerViewController.m */,
 				FD89E2D017CB9A0E00A41D91 /* FSPlaceholderImages.h */,
 				FD89E2D117CB9A0E00A41D91 /* FSPlaceholderImages.m */,
-				FD37CEBF181EBA5700606D81 /* FSImageViewer.bundle */,
+				589F82D818EDE791007F654A /* FSTitleView.h */,
 				FD89E29617CB99D900A41D91 /* Supporting Files */,
 			);
 			path = FSImageViewer;

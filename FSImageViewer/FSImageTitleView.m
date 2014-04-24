@@ -75,6 +75,10 @@
     }
 }
 
+- (void)updateMetadata:(NSString *)text index:(NSInteger)index total:(NSInteger)total {
+    self.text = text;
+}
+
 - (void) setAdjustsFontSizeToFitWidth:(BOOL)adjustsFontSizeToFitWidth {
     textLabel.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth;
     _adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth;
@@ -108,6 +112,10 @@
 
 - (BOOL)isHidden {
     return hidden;
+}
+
+- (void) adjustTextViewSize:(CGRect)imageViewControllerBounds {
+    self.frame = CGRectMake(0.0f, imageViewControllerBounds.size.height - 40.0f, imageViewControllerBounds.size.width, 40.0f);
 }
 
 @end

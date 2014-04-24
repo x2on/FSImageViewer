@@ -24,6 +24,7 @@
 #import <UIKit/UIKit.h>
 #import "FSImageViewer.h"
 #import "FSImageSource.h"
+#import "FSTitleView.h"
 
 @class FSImageViewerViewController;
 
@@ -53,6 +54,9 @@
 /// Image data source
 @property(strong, nonatomic, readonly) id <FSImageSource> imageSource;
 
+/// Title
+@property(strong, nonatomic) UIView<FSTitleView>* titleView;
+
 /// Optional Delegate
 @property(weak, nonatomic) id<FSImageViewerViewControllerDelegate> delegate;
 
@@ -67,9 +71,6 @@
 
 /// Disable image sharing
 @property(assign, nonatomic, getter = isSharingDisabled) BOOL sharingDisabled;
-
-/// Adjust font size to fit width - Default is NO
-@property(assign, nonatomic, getter = isAdjustsFontSizeToFitWidth) BOOL adjustsFontSizeToFitWidth;
 
 /// Current index of the image displayed
 /// @return current index of the image displayed
