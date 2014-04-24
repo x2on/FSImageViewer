@@ -54,6 +54,7 @@
 
     FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto, secondPhoto, failingPhoto]];
     self.imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
+    
     _imageViewController.delegate = self;
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {

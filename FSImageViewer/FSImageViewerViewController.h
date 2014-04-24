@@ -71,6 +71,12 @@
 /// Adjust font size to fit width - Default is NO
 @property(assign, nonatomic, getter = isAdjustsFontSizeToFitWidth) BOOL adjustsFontSizeToFitWidth;
 
+/// Override the background color when overlay is hidden - Default is black
+@property(strong, nonatomic) UIColor *backgroundColorHidden;
+
+/// Override the background color when overlay is visible - Default is white
+@property(strong, nonatomic) UIColor *backgroundColorVisible;
+
 /// Current index of the image displayed
 /// @return current index of the image displayed
 - (NSInteger)currentImageIndex;
