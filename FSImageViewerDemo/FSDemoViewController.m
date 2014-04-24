@@ -25,7 +25,6 @@
 #import "FSDemoViewController.h"
 #import "FSBasicImage.h"
 #import "FSBasicImageSource.h"
-#import "FSImageTitleWebView.h"
 
 @implementation FSDemoViewController
 
@@ -58,28 +57,6 @@
     else {
         [self.navigationController pushViewController:_imageViewController animated:YES];
     }
-}
-
-
-
-- (IBAction)openGalleryWebView {
-    NSArray *images = [self getImagesWithHtml:YES];
-    
-    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:images];
-    self.imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
-
-    self.imageViewController.titleView = [[FSImageTitleWebView alloc] initWithFrame:CGRectMake(0, self.imageViewController.view.frame.size.height, self.imageViewController.view.frame.size.width, 1)];
-
-    _imageViewController.delegate = self;
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:_imageViewController];
-        [self.navigationController presentViewController:navigationController animated:YES completion:nil];
-    }
-    else {
-        [self.navigationController pushViewController:_imageViewController animated:YES];
-    }
-    
 }
 
 - (NSArray*) getImagesWithHtml:(BOOL)useHtml {

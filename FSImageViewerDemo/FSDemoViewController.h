@@ -31,6 +31,4 @@
 
 - (IBAction)openGallery;
 
-- (IBAction)openGalleryWebView;
-
 @end

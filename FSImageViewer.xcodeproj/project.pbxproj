@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		589F82DE18EE043A007F654A /* FSImageTitleWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589F82DD18EE043A007F654A /* FSImageTitleWebView.m */; };
 		5AB0DA258592480FB4099411 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 746D153768E9481F8194ECCE /* libPods.a */; };
 		FD0FEFBB17D77F1C00470082 /* FSBasicImageSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0FEFBA17D77F1C00470082 /* FSBasicImageSource.m */; };
 		FD0FEFBF17D781EF00470082 /* FSBasicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0FEFBE17D781EF00470082 /* FSBasicImage.m */; };
@@ -60,8 +59,6 @@
 
 /* Begin PBXFileReference section */
 		589F82D818EDE791007F654A /* FSTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTitleView.h; sourceTree = "<group>"; };
-		589F82DC18EE043A007F654A /* FSImageTitleWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageTitleWebView.h; sourceTree = "<group>"; };
-		589F82DD18EE043A007F654A /* FSImageTitleWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageTitleWebView.m; sourceTree = "<group>"; };
 		746D153768E9481F8194ECCE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D07532210640A9B5D7DCD1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		FD0FEFB917D77F1C00470082 /* FSBasicImageSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBasicImageSource.h; sourceTree = "<group>"; };
@@ -214,8 +211,6 @@
 		FD89E2AB17CB99F000A41D91 /* FSImageViewerDemo */ = {
 			isa = PBXGroup;
 			children = (
-				589F82DC18EE043A007F654A /* FSImageTitleWebView.h */,
-				589F82DD18EE043A007F654A /* FSImageTitleWebView.m */,
 				FD89E2B417CB99F000A41D91 /* FSAppDelegate.h */,
 				FD89E2B517CB99F000A41D91 /* FSAppDelegate.m */,
 				FD89E2D817CB9A4400A41D91 /* FSDemoViewController.h */,
@@ -385,7 +380,6 @@
 				FD89E2B217CB99F000A41D91 /* main.m in Sources */,
 				FD89E2B617CB99F000A41D91 /* FSAppDelegate.m in Sources */,
 				FD89E2DD17CB9A4400A41D91 /* FSDemoViewController.m in Sources */,
-				589F82DE18EE043A007F654A /* FSImageTitleWebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
