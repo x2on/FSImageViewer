@@ -72,6 +72,14 @@
 /// Disable image sharing
 @property(assign, nonatomic, getter = isSharingDisabled) BOOL sharingDisabled;
 
+///
+/** Adjust font size to fit width
+ * Default is NO
+ * @deprecated This method has been deprecated in 2.4.
+ * Use titleView.adjustsFontSizeToFitWidth instead (if titleView is an FSImageTitleView").
+ */
+@property(assign, nonatomic, getter = isAdjustsFontSizeToFitWidth) BOOL adjustsFontSizeToFitWidth __attribute__((deprecated("use titleView.adjustsFontSizeToFitWidth instead (if titleView is an FSImageTitleView")));
+
 /// Override the background color when overlay is hidden - Default is black
 @property(strong, nonatomic) UIColor *backgroundColorHidden;
 

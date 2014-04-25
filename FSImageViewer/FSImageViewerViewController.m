@@ -108,8 +108,7 @@
     }
 
     if (!_titleView) {
-        FSImageTitleView *titleView = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 1)];
-        [self setTitleView:titleView];
+        [self setTitleView:[[FSImageTitleView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 1)]];
     }
 
     //  load FSImageView lazy
@@ -125,7 +124,9 @@
         [_titleView removeFromSuperview];
     }
     _titleView = titleView;
-    [self.view addSubview:_titleView];
+    if (_titleView) {
+        [self.view addSubview:_titleView];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -553,5 +554,29 @@
     defaultString = [bundle localizedStringForKey:key value:defaultString table:nil];
     return [[NSBundle mainBundle] localizedStringForKey:key value:defaultString table:nil];
 }
+
+#pragma mark - Deprecated
+
+- (BOOL)isAdjustsFontSizeToFitWidth
+{
+    if ([_titleView isKindOfClass:[FSImageTitleView class]]) {
+        FSImageTitleView *fsImageTitleView = (FSImageTitleView *) _titleView;
+        return fsImageTitleView.adjustsFontSizeToFitWidth;
+    }
+    NSLog(@"isAdjustsFontSizeToFitWidth is deprecated and only supported for FSImageTitleView");
+    return NO;
+}
+
+- (void)setAdjustsFontSizeToFitWidth:(BOOL)adjustsFontSizeToFitWidth
+{
+    if ([_titleView isKindOfClass:[FSImageTitleView class]]) {
+        FSImageTitleView *fsImageTitleView = (FSImageTitleView *) _titleView;
+        fsImageTitleView.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth;
+    }
+    else {
+        NSLog(@"setAdjustsFontSizeToFitWidth: is deprecated and only supported for FSImageTitleView");
+    }
+}
+
 
 @end
