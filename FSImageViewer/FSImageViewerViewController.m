@@ -323,7 +323,7 @@
     if(_showNumberOfItemsInTitle) {
         NSInteger numberOfImages = [_imageSource numberOfImages];
         if (numberOfImages > 1) {
-            self.navigationItem.title = [NSString stringWithFormat:@"%li %@ %li", pageIndex + 1, [self localizedStringForKey:@"imageCounter" withDefault:@"of"], (long)numberOfImages];
+            self.navigationItem.title = [NSString stringWithFormat:@"%i %@ %li", (int)pageIndex + 1, [self localizedStringForKey:@"imageCounter" withDefault:@"of"], (long)numberOfImages];
         } else {
             self.title = @"";
         }
