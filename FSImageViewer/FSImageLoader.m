@@ -76,7 +76,7 @@
         }];
         imageBlock(nil, error);
     };
-    NSString *cacheKey = [NSString stringWithFormat:@"FSImageLoader-%u", [[aURL description] hash]];
+    NSString *cacheKey = [NSString stringWithFormat:@"FSImageLoader-%lu", (unsigned long)[[aURL description] hash]];
 
     UIImage *anImage = [[EGOCache globalCache] imageForKey:cacheKey];
 
