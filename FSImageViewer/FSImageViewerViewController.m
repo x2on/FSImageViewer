@@ -472,7 +472,12 @@
     }
 
     if (imageView == nil || (NSNull *) imageView == [NSNull null]) {
-        imageView = [[FSImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _scrollView.bounds.size.width, _scrollView.bounds.size.height)];
+        CGRect frame = CGRectMake(0.0f, 0.0f, _scrollView.bounds.size.width, _scrollView.bounds.size.height);
+        if(self.createCustomImageView) {
+            imageView = self.createCustomImageView(frame);
+        } else {
+            imageView = [[FSImageView alloc] initWithFrame:frame];
+        }
         UIColor *backgroundColor = barsHidden ? _backgroundColorHidden : _backgroundColorVisible;
         [imageView changeBackgroundColor:backgroundColor];
         [_imageViews replaceObjectAtIndex:(NSUInteger) page withObject:imageView];
