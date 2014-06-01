@@ -38,6 +38,8 @@
 
         textLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 0.0f, self.frame.size.width - 40.0f, 40.0f)];
         textLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        textLabel.numberOfLines = 0;
+        textLabel.lineBreakMode = NSLineBreakByWordWrapping;
         textLabel.backgroundColor = [UIColor clearColor];
         textLabel.textAlignment = NSTextAlignmentCenter;
         textLabel.textColor = [UIColor whiteColor];
@@ -65,6 +67,7 @@
 
 - (void)setText:(NSString *)text {
     _text = text;
+    textLabel.font = nil;
     if (_text == nil || [_text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length == 0) {
         textLabel.text = nil;
         self.hidden = YES;
@@ -72,6 +75,9 @@
     else {
         textLabel.text = _text;
         self.hidden = NO;
+        if (!_adjustsFontSizeToFitWidth) {
+            [self adjustFontSizeToFit];
+        }
     }
 }
 
@@ -116,6 +122,24 @@
 
 - (void) adjustTextViewSize:(CGRect)imageViewControllerBounds {
     self.frame = CGRectMake(0.0f, imageViewControllerBounds.size.height - 40.0f, imageViewControllerBounds.size.width, 40.0f);
+}
+
+- (void)adjustFontSizeToFit {
+    UIFont *font = textLabel.font;
+    CGSize size = textLabel.frame.size;
+    
+    for (CGFloat maxSize = textLabel.font.pointSize; maxSize >= textLabel.minimumScaleFactor * textLabel.font.pointSize; maxSize -= 1.f) {
+        font = [font fontWithSize:maxSize];
+        CGSize constraintSize = CGSizeMake(size.width, MAXFLOAT);
+        CGSize labelSize = [textLabel.text sizeWithFont:font constrainedToSize:constraintSize lineBreakMode:textLabel.lineBreakMode];
+        
+        if(labelSize.height <= size.height) {
+            textLabel.font = font;
+            [textLabel setNeedsLayout];
+            break;
+        }
+    }
+    
 }
 
 @end
