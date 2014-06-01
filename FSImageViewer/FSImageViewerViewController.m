@@ -555,28 +555,4 @@
     return [[NSBundle mainBundle] localizedStringForKey:key value:defaultString table:nil];
 }
 
-#pragma mark - Deprecated
-
-- (BOOL)isAdjustsFontSizeToFitWidth
-{
-    if ([_titleView isKindOfClass:[FSImageTitleView class]]) {
-        FSImageTitleView *fsImageTitleView = (FSImageTitleView *) _titleView;
-        return fsImageTitleView.adjustsFontSizeToFitWidth;
-    }
-    NSLog(@"isAdjustsFontSizeToFitWidth is deprecated and only supported for FSImageTitleView");
-    return NO;
-}
-
-- (void)setAdjustsFontSizeToFitWidth:(BOOL)adjustsFontSizeToFitWidth
-{
-    if ([_titleView isKindOfClass:[FSImageTitleView class]]) {
-        FSImageTitleView *fsImageTitleView = (FSImageTitleView *) _titleView;
-        fsImageTitleView.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth;
-    }
-    else {
-        NSLog(@"setAdjustsFontSizeToFitWidth: is deprecated and only supported for FSImageTitleView");
-    }
-}
-
-
 @end
