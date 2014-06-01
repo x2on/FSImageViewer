@@ -34,8 +34,9 @@
 		FDBD6631193B054F006D3BF6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E29317CB99D900A41D91 /* Foundation.framework */; };
 		FDBD6632193B054F006D3BF6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E2A617CB99F000A41D91 /* UIKit.framework */; };
 		FDBD6638193B054F006D3BF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDBD6636193B054F006D3BF6 /* InfoPlist.strings */; };
-		FDBD663A193B054F006D3BF6 /* FSImageViewerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBD6639193B054F006D3BF6 /* FSImageViewerTests.m */; };
+		FDBD663A193B054F006D3BF6 /* FSImageTitleViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBD6639193B054F006D3BF6 /* FSImageTitleViewTests.m */; };
 		FDCB0B25193B90C200F8B8A1 /* libFSImageViewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E29017CB99D900A41D91 /* libFSImageViewer.a */; };
+		FDCB0B27193B956500F8B8A1 /* FSPlaceholderImagesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDCB0B26193B956500F8B8A1 /* FSPlaceholderImagesTests.m */; };
 		FDD96CE417CB9B7400B66931 /* libFSImageViewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E29017CB99D900A41D91 /* libFSImageViewer.a */; };
 		FDD96CEB17CB9B9000B66931 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD96CE917CB9B8800B66931 /* CFNetwork.framework */; };
 		FDD96CEC17CB9B9100B66931 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD96CE717CB9B8500B66931 /* Security.framework */; };
@@ -124,8 +125,9 @@
 		FDBD662F193B054F006D3BF6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		FDBD6635193B054F006D3BF6 /* FSImageViewerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FSImageViewerTests-Info.plist"; sourceTree = "<group>"; };
 		FDBD6637193B054F006D3BF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FDBD6639193B054F006D3BF6 /* FSImageViewerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSImageViewerTests.m; sourceTree = "<group>"; };
+		FDBD6639193B054F006D3BF6 /* FSImageTitleViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSImageTitleViewTests.m; sourceTree = "<group>"; };
 		FDBD663B193B054F006D3BF6 /* FSImageViewerTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FSImageViewerTests-Prefix.pch"; sourceTree = "<group>"; };
+		FDCB0B26193B956500F8B8A1 /* FSPlaceholderImagesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPlaceholderImagesTests.m; sourceTree = "<group>"; };
 		FDD96CE117CB9ADC00B66931 /* FSImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageViewer.h; sourceTree = "<group>"; };
 		FDD96CE517CB9B8000B66931 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FDD96CE717CB9B8500B66931 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -277,7 +279,8 @@
 		FDBD6633193B054F006D3BF6 /* FSImageViewerTests */ = {
 			isa = PBXGroup;
 			children = (
-				FDBD6639193B054F006D3BF6 /* FSImageViewerTests.m */,
+				FDBD6639193B054F006D3BF6 /* FSImageTitleViewTests.m */,
+				FDCB0B26193B956500F8B8A1 /* FSPlaceholderImagesTests.m */,
 				FDBD6634193B054F006D3BF6 /* Supporting Files */,
 			);
 			path = FSImageViewerTests;
@@ -509,7 +512,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDBD663A193B054F006D3BF6 /* FSImageViewerTests.m in Sources */,
+				FDCB0B27193B956500F8B8A1 /* FSPlaceholderImagesTests.m in Sources */,
+				FDBD663A193B054F006D3BF6 /* FSImageTitleViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
