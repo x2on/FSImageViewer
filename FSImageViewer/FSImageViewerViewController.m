@@ -44,16 +44,16 @@
 
 - (id)initWithImageSource:(id <FSImageSource>)aImageSource imageIndex:(NSInteger)imageIndex {
     if ((self = [super init])) {
-
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleBarsNotification:) name:kFSImageViewerToogleBarsNotificationKey object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageViewDidFinishLoading:) name:kFSImageViewerDidFinishedLoadingNotificationKey object:nil];
-
+        
         self.hidesBottomBarWhenPushed = YES;
         self.wantsFullScreenLayout = YES;
         
         self.backgroundColorHidden = [UIColor blackColor];
         self.backgroundColorVisible = [UIColor whiteColor];
-
+        
         _imageSource = aImageSource;
         pageIndex = imageIndex;
         currentPageIndex = imageIndex;
@@ -79,15 +79,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
 #ifdef __IPHONE_7_0
 	if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
 		self.automaticallyAdjustsScrollViewInsets = NO;
 	}
 #endif
-
+    
     self.view.backgroundColor = self.backgroundColorHidden;
-
+    
     if (!_scrollView) {
         self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
         _scrollView.delegate = self;
@@ -106,11 +106,11 @@
         _scrollView.backgroundColor = self.view.backgroundColor;
         [self.view addSubview:_scrollView];
     }
-
+    
     if (!_titleView) {
         [self setTitleView:[[FSImageTitleView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 1)]];
     }
-
+    
     //  load FSImageView lazy
     NSMutableArray *views = [[NSMutableArray alloc] init];
     for (NSUInteger i = 0; i < [_imageSource numberOfImages]; i++) {
@@ -131,7 +131,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
     shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share:)];
     shareButton.enabled = NO;
     if (self.presentingViewController && (self.modalPresentationStyle == UIModalPresentationFullScreen)) {
@@ -146,7 +146,7 @@
             self.navigationItem.rightBarButtonItem = shareButton;
         }
     }
-
+    
     [self setupScrollViewContentSize];
     [self moveToImageAtIndex:pageIndex animated:NO];
 }
@@ -155,18 +155,18 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         return (interfaceOrientation == UIInterfaceOrientationLandscapeRight || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
     }
-
+    
     return (UIInterfaceOrientationIsLandscape(interfaceOrientation) || interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     rotating = YES;
-
+    
     if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
         CGRect rect = [[UIScreen mainScreen] bounds];
         _scrollView.contentSize = CGSizeMake(rect.size.height * [_imageSource numberOfImages], rect.size.width);
     }
-
+    
     NSInteger count = 0;
     for (FSImageView *view in _imageViews) {
         if ([view isKindOfClass:[FSImageView class]]) {
@@ -191,7 +191,7 @@
     [self moveToImageAtIndex:pageIndex animated:NO];
     if (pageIndex < [_imageViews count])
         [_scrollView scrollRectToVisible:((FSImageView *) [_imageViews objectAtIndex:(NSUInteger) pageIndex]).frame animated:YES];
-
+    
     for (FSImageView *view in self.imageViews) {
         if ([view isKindOfClass:[FSImageView class]]) {
             [view setHidden:NO];
@@ -243,23 +243,22 @@
 #ifdef __IPHONE_7_0
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
         [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
-    } else {
+    }
 #endif
         [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:UIStatusBarAnimationFade];
 #ifdef __IPHONE_7_0
-    }
 #endif
-
+    
 }
 
 - (void)setBarsHidden:(BOOL)hidden animated:(BOOL)animated {
     if (hidden && barsHidden) {
         return;
     }
-
+    
     [self setStatusBarHidden:hidden];
     [self.navigationController setNavigationBarHidden:hidden animated:animated];
-
+    
     [UIView animateWithDuration:0.3 animations:^{
         UIColor *backgroundColor = hidden ? _backgroundColorHidden : _backgroundColorVisible;
         self.view.backgroundColor = backgroundColor;
@@ -270,9 +269,9 @@
             }
         }
     }];
-
+    
     [_titleView hideView:hidden];
-
+    
     barsHidden = hidden;
 }
 
@@ -286,7 +285,7 @@
     if (notification == nil) {
         return;
     }
-
+    
     NSInteger centerIndex = [self centerImageIndex];
     if (centerIndex >= _imageSource.numberOfImages) {
         NSAssert(centerIndex < _imageSource.numberOfImages, @"centerIndex is out of bounds");
@@ -319,7 +318,7 @@
 }
 
 - (void)setViewState {
-
+    
     if(_showNumberOfItemsInTitle) {
         NSInteger numberOfImages = [_imageSource numberOfImages];
         if (numberOfImages > 1) {
@@ -328,11 +327,11 @@
             self.title = @"";
         }
     }
-
+    
     if (_titleView) {
         [_titleView updateMetadata:_imageSource[pageIndex].title index:pageIndex total:_imageSource.numberOfImages];
     }
-
+    
 }
 
 - (void)moveToImageAtIndex:(NSInteger)index animated:(BOOL)animated {
@@ -343,15 +342,15 @@
         currentPageIndex = index;
         
         [self setViewState];
-
+        
         [self enqueueImageViewAtIndex:index];
-
+        
         [self loadScrollViewWithPage:index - 1];
         [self loadScrollViewWithPage:index];
         [self loadScrollViewWithPage:index + 1];
-
+        
         [self.scrollView scrollRectToVisible:((FSImageView *) [_imageViews objectAtIndex:(NSUInteger) index]).frame animated:animated];
-
+        
         if (_imageSource[pageIndex].failed) {
             [self setBarsHidden:NO animated:YES];
             shareButton.enabled = NO;
@@ -364,7 +363,7 @@
                 }
             }
         }
-
+        
         if (index + 1 < [self.imageSource numberOfImages] && (NSNull *) [_imageViews objectAtIndex:(NSUInteger) (index + 1)] != [NSNull null]) {
             [((FSImageView *) [self.imageViews objectAtIndex:(NSUInteger) (index + 1)]) killScrollViewZoom];
         }
@@ -372,33 +371,33 @@
             [((FSImageView *) [self.imageViews objectAtIndex:(NSUInteger) (index - 1)]) killScrollViewZoom];
         }
     }
-
+    
 }
 
 - (void)layoutScrollViewSubviews {
-
+    
     NSInteger index = [self currentImageIndex];
-
+    
     for (NSInteger page = index - 1; page < index + 3; page++) {
-
+        
         if (page >= 0 && page < [_imageSource numberOfImages]) {
-
+            
             CGFloat originX = _scrollView.bounds.size.width * page;
-
+            
             if (page < index) {
                 originX -= kFSImageViewerImageGap;
             }
             if (page > index) {
                 originX += kFSImageViewerImageGap;
             }
-
+            
             if ([_imageViews objectAtIndex:(NSUInteger) page] == [NSNull null] || !((UIView *) [_imageViews objectAtIndex:(NSUInteger) page]).superview) {
                 [self loadScrollViewWithPage:page];
             }
-
+            
             FSImageView *imageView = [_imageViews objectAtIndex:(NSUInteger) page];
             CGRect newFrame = CGRectMake(originX, 0.0f, _scrollView.bounds.size.width, _scrollView.bounds.size.height);
-
+            
             if (!CGRectEqualToRect(imageView.frame, newFrame)) {
                 [UIView animateWithDuration:0.1 animations:^{
                     imageView.frame = newFrame;
@@ -409,21 +408,21 @@
 }
 
 - (void)setupScrollViewContentSize {
-
+    
     CGSize contentSize = self.view.bounds.size;
     contentSize.width = (contentSize.width * [_imageSource numberOfImages]);
-
+    
     if (!CGSizeEqualToSize(contentSize, self.scrollView.contentSize)) {
         self.scrollView.contentSize = contentSize;
     }
-
+    
     if (![_titleView isHidden]) {
         [_titleView adjustTextViewSize:self.view.bounds];
     }
 }
 
 - (void)enqueueImageViewAtIndex:(NSInteger)theIndex {
-
+    
     NSInteger count = 0;
     for (FSImageView *view in _imageViews) {
         if ([view isKindOfClass:[FSImageView class]]) {
@@ -439,7 +438,7 @@
 }
 
 - (FSImageView *)dequeueImageView {
-
+    
     NSInteger count = 0;
     for (FSImageView *view in self.imageViews) {
         if ([view isKindOfClass:[FSImageView class]]) {
@@ -454,14 +453,14 @@
 }
 
 - (void)loadScrollViewWithPage:(NSInteger)page {
-
+    
     if (page < 0) {
         return;
     }
     if (page >= [_imageSource numberOfImages]) {
         return;
     }
-
+    
     FSImageView *imageView = [_imageViews objectAtIndex:(NSUInteger) page];
     if ((NSNull *) imageView == [NSNull null]) {
         imageView = [self dequeueImageView];
@@ -470,20 +469,20 @@
             imageView = [_imageViews objectAtIndex:(NSUInteger) page];
         }
     }
-
+    
     if (imageView == nil || (NSNull *) imageView == [NSNull null]) {
         imageView = [[FSImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _scrollView.bounds.size.width, _scrollView.bounds.size.height)];
         UIColor *backgroundColor = barsHidden ? _backgroundColorHidden : _backgroundColorVisible;
         [imageView changeBackgroundColor:backgroundColor];
         [_imageViews replaceObjectAtIndex:(NSUInteger) page withObject:imageView];
     }
-
+    
     imageView.image = _imageSource[page];
-
+    
     if (imageView.superview == nil) {
         [_scrollView addSubview:imageView];
     }
-
+    
     CGRect frame = _scrollView.frame;
     NSInteger centerPageIndex = pageIndex;
     CGFloat xOrigin = (frame.size.width * page);
@@ -492,7 +491,7 @@
     } else if (page < centerPageIndex) {
         xOrigin = (frame.size.width * page) - kFSImageViewerImageGap;
     }
-
+    
     frame.origin.x = xOrigin;
     frame.origin.y = 0;
     imageView.frame = frame;
@@ -505,11 +504,11 @@
     if (index >= [_imageSource numberOfImages] || index < 0) {
         return;
     }
-
+    
     if (pageIndex != index && !rotating) {
         pageIndex = index;
         [self setViewState];
-
+        
         if (![scrollView isTracking]) {
             [self layoutScrollViewSubviews];
         }
@@ -521,7 +520,7 @@
     if (index >= [_imageSource numberOfImages] || index < 0) {
         return;
     }
-
+    
     [self moveToImageAtIndex:index animated:YES];
 }
 
@@ -542,15 +541,15 @@
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FSImageViewer" ofType:@"bundle"];
         bundle = [NSBundle bundleWithPath:bundlePath] ?: [NSBundle mainBundle];
         for (NSString *language in [NSLocale preferredLanguages])
+        {
+            if ([[bundle localizations] containsObject:language])
             {
-                if ([[bundle localizations] containsObject:language])
-                {
-                    bundlePath = [bundle pathForResource:language ofType:@"lproj"];
-                    bundle = [NSBundle bundleWithPath:bundlePath];
-                    break;
-                }
+                bundlePath = [bundle pathForResource:language ofType:@"lproj"];
+                bundle = [NSBundle bundleWithPath:bundlePath];
+                break;
             }
         }
+    }
     defaultString = [bundle localizedStringForKey:key value:defaultString table:nil];
     return [[NSBundle mainBundle] localizedStringForKey:key value:defaultString table:nil];
 }
