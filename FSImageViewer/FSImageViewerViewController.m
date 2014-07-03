@@ -25,8 +25,6 @@
 #import "FSImageViewerViewController.h"
 #import "FSImageTitleView.h"
 
-#define IOS_GREATER_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
-
 @interface FSImageViewerViewController ()
 
 @end
@@ -82,11 +80,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (IOS_GREATER_THAN(@"7.0")) {
-        if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
-            self.automaticallyAdjustsScrollViewInsets = NO;
-        }
-    }
+#ifdef __IPHONE_7_0
+	if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
+		self.automaticallyAdjustsScrollViewInsets = NO;
+	}
+#endif
     
     self.view.backgroundColor = self.backgroundColorHidden;
     
@@ -138,9 +136,9 @@
     shareButton.enabled = NO;
     if (self.presentingViewController && (self.modalPresentationStyle == UIModalPresentationFullScreen)) {
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:[self localizedStringForKey:@"done" withDefault:@"Done"] style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
-        self.navigationItem.leftBarButtonItem = doneButton;
+        self.navigationItem.rightBarButtonItem = doneButton;
         if (!_sharingDisabled) {
-            self.navigationItem.rightBarButtonItem = shareButton;
+            self.navigationItem.leftBarButtonItem = shareButton;
         }
     }
     else {
@@ -242,12 +240,15 @@
 
 - (void)setStatusBarHidden:(BOOL)hidden {
     statusBarHidden = hidden;
-    if (IOS_GREATER_THAN(@"7.0")) {
-        if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
-            [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
-        }
+#ifdef __IPHONE_7_0
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
     }
-    [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:UIStatusBarAnimationFade];
+#endif
+        [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:UIStatusBarAnimationFade];
+#ifdef __IPHONE_7_0
+#endif
+    
 }
 
 - (void)setBarsHidden:(BOOL)hidden animated:(BOOL)animated {
