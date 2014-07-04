@@ -80,11 +80,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-#ifdef __IPHONE_7_0
 	if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
 		self.automaticallyAdjustsScrollViewInsets = NO;
 	}
-#endif
 
     self.view.backgroundColor = self.backgroundColorHidden;
 
@@ -240,15 +238,12 @@
 
 - (void)setStatusBarHidden:(BOOL)hidden {
     statusBarHidden = hidden;
-#ifdef __IPHONE_7_0
+
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
         [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
     } else {
-#endif
         [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:UIStatusBarAnimationFade];
-#ifdef __IPHONE_7_0
     }
-#endif
 
 }
 
