@@ -24,6 +24,22 @@
 #import <UIKit/UIKit.h>
 #import "FSImageViewer.h"
 #import "FSImageSource.h"
+#import "FSTitleView.h"
+
+@class FSImageViewerViewController;
+
+// Optional Delegate for getting current presented image index.
+@protocol FSImageViewerViewControllerDelegate <NSObject>
+
+@optional
+
+// Called if moved to the image at the given index.
+- (void)imageViewerViewController:(FSImageViewerViewController *)imageViewerViewController didMoveToImageAtIndex:(NSInteger)index;
+
+- (void)imageViewerViewController:(FSImageViewerViewController *)imageViewerViewController willDismissViewControllerAnimated:(BOOL)animated;
+- (void)imageViewerViewController:(FSImageViewerViewController *)imageViewerViewController didDismissViewControllerAnimated:(BOOL)animated;
+
+@end
 
 /// FSImageViewerViewController is an UIViewController which can present images.
 @interface FSImageViewerViewController : UIViewController <UIScrollViewDelegate>
@@ -38,17 +54,29 @@
 /// Image data source
 @property(strong, nonatomic, readonly) id <FSImageSource> imageSource;
 
+/// Title
+@property(strong, nonatomic) UIView<FSTitleView>* titleView;
+
+/// Optional Delegate
+@property(weak, nonatomic) id<FSImageViewerViewControllerDelegate> delegate;
+
 /// FSImageView array
 @property(strong, nonatomic) NSMutableArray *imageViews;
 
 /// Main scrollView
 @property(strong, nonatomic) UIScrollView *scrollView;
 
+/// Display a "x of y" images in the navigation title - Default is YES
+@property(assign, nonatomic) BOOL showNumberOfItemsInTitle;
+
 /// Disable image sharing
 @property(assign, nonatomic, getter = isSharingDisabled) BOOL sharingDisabled;
 
-/// Adjust font size to fit width - Default is NO
-@property(assign, nonatomic, getter = isAdjustsFontSizeToFitWidth) BOOL adjustsFontSizeToFitWidth;
+/// Override the background color when overlay is hidden - Default is black
+@property(strong, nonatomic) UIColor *backgroundColorHidden;
+
+/// Override the background color when overlay is visible - Default is white
+@property(strong, nonatomic) UIColor *backgroundColorVisible;
 
 /// Current index of the image displayed
 /// @return current index of the image displayed

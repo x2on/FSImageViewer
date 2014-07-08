@@ -21,13 +21,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
+#import "FSTitleView.h"
 
-@interface FSImageTitleView : UIView
+@interface FSImageTitleView : UIView<FSTitleView>
 
 @property (strong, nonatomic) NSString *text;
 @property (assign, nonatomic) BOOL adjustsFontSizeToFitWidth;
-
-- (void)hideView:(BOOL)value;
-- (BOOL)isHidden;
 
 @end

@@ -1,7 +1,9 @@
-//  FSImageViewerDemo
 //
-//  Created by Felix Schulze on 8/26/2013.
-//  Copyright 2013 Felix Schulze. All rights reserved.
+//  FSPlaceholderImagesTests.m
+//  FSImageViewerTests
+//
+//  Created by Felix Schulze on 01.06.14.
+//  Copyright (c) 2014 Felix Schulze. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,13 +24,17 @@
 //  THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
-#import "FSImageViewerViewController.h"
+#import "FSPlaceholderImages.h"
 
-@interface FSDemoViewController : UIViewController<FSImageViewerViewControllerDelegate>
+SpecBegin(FSPlaceholderImages)
 
-@property(strong, nonatomic) FSImageViewerViewController *imageViewController;
+describe(@"test", ^{
+    
+    it(@"matches view", ^{
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[FSPlaceholderImages errorImage]];
+        EXP_expect(imageView).to.haveValidSnapshot();
+    });
+    
+});
 
-- (IBAction)openGallery;
-
-@end
+SpecEnd

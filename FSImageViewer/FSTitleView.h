@@ -1,4 +1,4 @@
-//  FSImageViewerDemo
+//  FSImageViewer
 //
 //  Created by Felix Schulze on 8/26/2013.
 //  Copyright 2013 Felix Schulze. All rights reserved.
@@ -22,13 +22,12 @@
 //  THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
-#import "FSImageViewerViewController.h"
+/// FSTitleView represents an abstract UIView with a title and the image object.
+@protocol FSTitleView <NSObject>
 
-@interface FSDemoViewController : UIViewController<FSImageViewerViewControllerDelegate>
-
-@property(strong, nonatomic) FSImageViewerViewController *imageViewController;
-
-- (IBAction)openGallery;
+- (void)updateMetadata:(NSString*)text index:(NSInteger)index total:(NSInteger)total;
+- (void)hideView:(BOOL)value;
+- (BOOL)isHidden;
+- (void)adjustTextViewSize:(CGRect)imageViewControllerBounds;
 
 @end

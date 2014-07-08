@@ -27,12 +27,11 @@
 
 @interface FSImageViewerViewController ()
 
-@property(strong, nonatomic) FSImageTitleView *titleView;
-
 @end
 
 @implementation FSImageViewerViewController {
     NSInteger pageIndex;
+    NSInteger currentPageIndex;
     BOOL rotating;
     BOOL barsHidden;
     BOOL statusBarHidden;
@@ -51,11 +50,16 @@
 
         self.hidesBottomBarWhenPushed = YES;
         self.wantsFullScreenLayout = YES;
+        
+        self.backgroundColorHidden = [UIColor blackColor];
+        self.backgroundColorVisible = [UIColor whiteColor];
 
         _imageSource = aImageSource;
         pageIndex = imageIndex;
+        currentPageIndex = imageIndex;
         
         self.sharingDisabled = NO;
+        self.showNumberOfItemsInTitle = YES;
     }
     return self;
 }
@@ -70,19 +74,17 @@
     self.imageViews = nil;
     _scrollView.delegate = nil;
     self.scrollView = nil;
-    _titleView = nil;
+    self.titleView = nil;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-#ifdef __IPHONE_7_0
 	if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
 		self.automaticallyAdjustsScrollViewInsets = NO;
 	}
-#endif
 
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = self.backgroundColorHidden;
 
     if (!_scrollView) {
         self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
@@ -104,9 +106,7 @@
     }
 
     if (!_titleView) {
-        self.titleView = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 1)];
-        _titleView.adjustsFontSizeToFitWidth = [self isAdjustsFontSizeToFitWidth];
-        [self.view addSubview:_titleView];
+        [self setTitleView:[[FSImageTitleView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 1)]];
     }
 
     //  load FSImageView lazy
@@ -115,6 +115,16 @@
         [views addObject:[NSNull null]];
     }
     self.imageViews = views;
+}
+
+- (void) setTitleView:(UIView<FSTitleView> *)titleView {
+    if(_titleView) {
+        [_titleView removeFromSuperview];
+    }
+    _titleView = titleView;
+    if (_titleView) {
+        [self.view addSubview:_titleView];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -177,7 +187,8 @@
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [self setupScrollViewContentSize];
     [self moveToImageAtIndex:pageIndex animated:NO];
-    [_scrollView scrollRectToVisible:((FSImageView *) [_imageViews objectAtIndex:(NSUInteger) pageIndex]).frame animated:YES];
+    if (pageIndex < [_imageViews count])
+        [_scrollView scrollRectToVisible:((FSImageView *) [_imageViews objectAtIndex:(NSUInteger) pageIndex]).frame animated:YES];
 
     for (FSImageView *view in self.imageViews) {
         if ([view isKindOfClass:[FSImageView class]]) {
@@ -188,7 +199,15 @@
 }
 
 - (void)done:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+	if ([_delegate respondsToSelector:@selector(imageViewerViewController:willDismissViewControllerAnimated:)]) {
+		[_delegate imageViewerViewController:self willDismissViewControllerAnimated:YES];
+	}
+	
+    [self dismissViewControllerAnimated:YES completion:^{
+		if ([_delegate respondsToSelector:@selector(imageViewerViewController:didDismissViewControllerAnimated:)]) {
+			[_delegate imageViewerViewController:self didDismissViewControllerAnimated:YES];
+		}
+	}];
 }
 
 - (void)share:(id)sender {
@@ -202,7 +221,7 @@
     }
 }
 
-- (void) setSharingDisabled:(BOOL)sharingDisabled {
+- (void)setSharingDisabled:(BOOL)sharingDisabled {
     if (![UIActivityViewController class]) {
         _sharingDisabled = YES;
     }
@@ -219,15 +238,12 @@
 
 - (void)setStatusBarHidden:(BOOL)hidden {
     statusBarHidden = hidden;
-#ifdef __IPHONE_7_0
+
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
         [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
     } else {
-#endif
         [[UIApplication sharedApplication] setStatusBarHidden:hidden withAnimation:UIStatusBarAnimationFade];
-#ifdef __IPHONE_7_0
     }
-#endif
 
 }
 
@@ -240,7 +256,7 @@
     [self.navigationController setNavigationBarHidden:hidden animated:animated];
 
     [UIView animateWithDuration:0.3 animations:^{
-        UIColor *backgroundColor = hidden ? [UIColor blackColor] : [UIColor whiteColor];
+        UIColor *backgroundColor = hidden ? _backgroundColorHidden : _backgroundColorVisible;
         self.view.backgroundColor = backgroundColor;
         self.scrollView.backgroundColor = backgroundColor;
         for (FSImageView *imageView in _imageViews) {
@@ -266,7 +282,13 @@
         return;
     }
 
-    if ([[notification object][@"image"] isEqual:_imageSource[[self centerImageIndex]]]) {
+    NSInteger centerIndex = [self centerImageIndex];
+    if (centerIndex >= _imageSource.numberOfImages) {
+        NSAssert(centerIndex < _imageSource.numberOfImages, @"centerIndex is out of bounds");
+        return;
+    }
+    
+    if ([[notification object][@"image"] isEqual:_imageSource[centerIndex]]) {
         if ([[notification object][@"failed"] boolValue]) {
             if (barsHidden) {
                 [self setBarsHidden:NO animated:YES];
@@ -293,23 +315,28 @@
 
 - (void)setViewState {
 
-    NSInteger numberOfImages = [_imageSource numberOfImages];
-    if (numberOfImages > 1) {
-        self.navigationItem.title = [NSString stringWithFormat:@"%i %@ %i", pageIndex + 1, [self localizedStringForKey:@"imageCounter" withDefault:@"of"], numberOfImages];
-    } else {
-        self.title = @"";
+    if(_showNumberOfItemsInTitle) {
+        NSInteger numberOfImages = [_imageSource numberOfImages];
+        if (numberOfImages > 1) {
+            self.navigationItem.title = [NSString stringWithFormat:@"%i %@ %li", (int)pageIndex + 1, [self localizedStringForKey:@"imageCounter" withDefault:@"of"], (long)numberOfImages];
+        } else {
+            self.title = @"";
+        }
     }
 
     if (_titleView) {
-        _titleView.text = _imageSource[pageIndex].title;
+        [_titleView updateMetadata:_imageSource[pageIndex].title index:pageIndex total:_imageSource.numberOfImages];
     }
 
 }
 
 - (void)moveToImageAtIndex:(NSInteger)index animated:(BOOL)animated {
     if (index < [self.imageSource numberOfImages] && index >= 0) {
-
+        
+        BOOL sameIndex = (currentPageIndex == index);
         pageIndex = index;
+        currentPageIndex = index;
+        
         [self setViewState];
 
         [self enqueueImageViewAtIndex:index];
@@ -327,6 +354,9 @@
         else {
             if (pageIndex == [self currentImageIndex] && _imageSource[pageIndex].image) {
                 shareButton.enabled = YES;
+                if (!sameIndex && [_delegate respondsToSelector:@selector(imageViewerViewController:didMoveToImageAtIndex:)]) {
+                    [_delegate imageViewerViewController:self didMoveToImageAtIndex:pageIndex];
+                }
             }
         }
 
@@ -383,7 +413,7 @@
     }
 
     if (![_titleView isHidden]) {
-        _titleView.frame = CGRectMake(0.0f, self.view.bounds.size.height - 40.0f, self.view.bounds.size.width, 40.0f);
+        [_titleView adjustTextViewSize:self.view.bounds];
     }
 }
 
@@ -438,7 +468,7 @@
 
     if (imageView == nil || (NSNull *) imageView == [NSNull null]) {
         imageView = [[FSImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _scrollView.bounds.size.width, _scrollView.bounds.size.height)];
-        UIColor *backgroundColor = barsHidden ? [UIColor blackColor] : [UIColor whiteColor];
+        UIColor *backgroundColor = barsHidden ? _backgroundColorHidden : _backgroundColorVisible;
         [imageView changeBackgroundColor:backgroundColor];
         [_imageViews replaceObjectAtIndex:(NSUInteger) page withObject:imageView];
     }
