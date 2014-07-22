@@ -36,6 +36,7 @@
     BOOL barsHidden;
     BOOL statusBarHidden;
     UIBarButtonItem *shareButton;
+    NSArray *applicationActivities;
 }
 
 - (id)initWithImageSource:(id <FSImageSource>)aImageSource {
@@ -210,12 +211,16 @@
 	}];
 }
 
+-(void)setApplicationActivities:(NSArray*)activities {
+    applicationActivities = activities;
+}
+
 - (void)share:(id)sender {
     if ([UIActivityViewController class]) {
         id<FSImage> currentImage = _imageSource[[self currentImageIndex]];
         NSAssert(currentImage.image, @"The image must be loaded to share.");
         if (currentImage.image) {
-            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[currentImage.image] applicationActivities:nil];
+            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[currentImage.image] applicationActivities:applicationActivities];
             [self presentViewController:controller animated:YES completion:nil];
         }
     }

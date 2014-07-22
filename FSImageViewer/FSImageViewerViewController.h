@@ -87,4 +87,7 @@
 /// @param animated should the movevement animated
 - (void)moveToImageAtIndex:(NSInteger)index animated:(BOOL)animated;
 
+/// Allows you to add additional items to "share"
+-(void)setApplicationActivities:(NSArray*) activities;
+
 @end
