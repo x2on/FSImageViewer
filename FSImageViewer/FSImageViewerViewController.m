@@ -215,7 +215,7 @@
         id<FSImage> currentImage = _imageSource[[self currentImageIndex]];
         NSAssert(currentImage.image, @"The image must be loaded to share.");
         if (currentImage.image) {
-            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[currentImage.image] applicationActivities:self.applicationActivities];
+            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[currentImage.image] applicationActivities:_applicationActivities];
             [self presentViewController:controller animated:YES completion:nil];
         }
     }
