@@ -78,6 +78,9 @@
 /// Override the background color when overlay is visible - Default is white
 @property(strong, nonatomic) UIColor *backgroundColorVisible;
 
+/// Used to add additional items to the "share" button
+@property(strong, nonatomic) NSArray* applicationActivities;
+
 /// Current index of the image displayed
 /// @return current index of the image displayed
 - (NSInteger)currentImageIndex;
