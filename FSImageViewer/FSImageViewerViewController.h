@@ -90,5 +90,4 @@
 /// Used to add additional items to the "share" button
 @property(strong, nonatomic) NSArray* applicationActivities;
 
-
 @end
