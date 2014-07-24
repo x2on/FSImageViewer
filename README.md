@@ -11,7 +11,7 @@ If you must use AFNetworking 1.3 you can use the 1.x version of FSImageViewer (h
 ## Install
 Using [CocoaPods](http://cocoapods.org/):
 
-`pod 'FSImageViewer', '~> 2.5'`
+`pod 'FSImageViewer', '~> 2.6'`
 
 ## Basic usage
 
