@@ -84,7 +84,7 @@
 		self.automaticallyAdjustsScrollViewInsets = NO;
 	}
 
-    self.view.backgroundColor = self.backgroundColorHidden;
+    self.view.backgroundColor = self.backgroundColorVisible;
 
     if (!_scrollView) {
         self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
