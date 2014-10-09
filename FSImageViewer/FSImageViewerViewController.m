@@ -216,6 +216,9 @@
         NSAssert(currentImage.image, @"The image must be loaded to share.");
         if (currentImage.image) {
             UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[currentImage.image] applicationActivities:_applicationActivities];
+            if(!controller.popoverPresentationController.barButtonItem){
+                controller.popoverPresentationController.barButtonItem = shareButton;
+            }
             [self presentViewController:controller animated:YES completion:nil];
         }
     }
