@@ -218,15 +218,6 @@
     }
 }
 
-- (void)setSharingDisabled:(BOOL)sharingDisabled {
-    if (![UIActivityViewController class]) {
-        _sharingDisabled = YES;
-    }
-    else {
-        _sharingDisabled = sharingDisabled;
-    }
-}
-
 - (NSInteger)currentImageIndex {
     return pageIndex;
 }
