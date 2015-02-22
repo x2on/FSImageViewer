@@ -52,6 +52,9 @@
                 
         self.backgroundColorHidden = [UIColor blackColor];
         self.backgroundColorVisible = [UIColor whiteColor];
+        
+        self.progressColorHidden = [UIColor whiteColor];
+        self.progressColorVisible = [UIColor darkGrayColor];
 
         _imageSource = aImageSource;
         pageIndex = imageIndex;
@@ -248,6 +251,7 @@
         for (FSImageView *imageView in _imageViews) {
             if ([imageView isKindOfClass:[FSImageView class]]) {
                 [imageView changeBackgroundColor:backgroundColor];;
+                [imageView changeProgressViewColor:hidden ? _progressColorHidden : _progressColorVisible];
             }
         }
     }];
@@ -456,6 +460,7 @@
         imageView = [[FSImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _scrollView.bounds.size.width, _scrollView.bounds.size.height)];
         UIColor *backgroundColor = barsHidden ? _backgroundColorHidden : _backgroundColorVisible;
         [imageView changeBackgroundColor:backgroundColor];
+        [imageView changeProgressViewColor:barsHidden ? _progressColorHidden : _progressColorVisible];
         [_imageViews replaceObjectAtIndex:(NSUInteger) page withObject:imageView];
     }
 

@@ -44,6 +44,8 @@
 
 - (void)changeBackgroundColor:(UIColor *)color;
 
+- (void)changeProgressViewColor:(UIColor *)color;
+
 - (void)rotateToOrientation:(UIInterfaceOrientation)orientation;
 
 @end

@@ -69,7 +69,7 @@
     }
 }
 
-- (void)loadImageForURL:(NSURL *)aURL image:(void (^)(UIImage *image, NSError *error))imageBlock {
+- (void)loadImageForURL:(NSURL *)aURL progress:(void (^)(float progress))progress image:(void (^)(UIImage *image, NSError *error))imageBlock {
 
     if (!aURL) {
         NSError *error = [NSError errorWithDomain:@"de.felixschulze.fsimageloader" code:412 userInfo:@{
@@ -123,6 +123,13 @@
             }
             [runningRequests removeObject:imageRequestOperationForBlock];
         }];
+        
+        [imageRequestOperation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
+            if (progress) {
+                progress((float)totalBytesRead / totalBytesExpectedToRead);
+            }
+        }];
+        
         [imageRequestOperation start];
     }
 }

@@ -21,7 +21,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-
+#import <UAProgressView/UAProgressView.h>
 #import "FSImageView.h"
 #import "FSPlaceholderImages.h"
 #import "FSImageScrollView.h"
@@ -43,8 +43,13 @@
 }
 @end
 
+@interface FSImageView()
+
+@property (nonatomic, strong) UAProgressView *progressView;
+
+@end
+
 @implementation FSImageView {
-    UIActivityIndicatorView *activityView;
     CGFloat beginRadians;
 }
 
@@ -69,11 +74,11 @@
         imageView.tag = ZOOM_VIEW_TAG;
         [_scrollView addSubview:imageView];
         _imageView = imageView;
+        
+        self.progressView = [[UAProgressView alloc] initWithFrame:CGRectMake((CGRectGetWidth(self.frame) / 2) - 22.0f, CGRectGetHeight(self.frame) / 2 - 22.0f, 44.0f, 44.0f)];
 
-        activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        activityView.frame = CGRectMake((CGRectGetWidth(self.frame) / 2) - 11.0f, CGRectGetHeight(self.frame) / 2, 22.0f, 22.0f);
-        activityView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
-        [self addSubview:activityView];
+        _progressView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
+        [self addSubview:_progressView];
 
         RotateGesture *gesture = [[RotateGesture alloc] initWithTarget:self action:@selector(rotate:)];
         [self addGestureRecognizer:gesture];
@@ -125,7 +130,8 @@
             NSInteger fileSize = [[attributes objectForKey:NSFileSize] integerValue];
 
             if (fileSize >= MB_FILE_SIZE) {
-
+                _progressView.hidden = NO;
+                [_progressView setProgress:0.5 animated:YES];
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
 
                     UIImage *image = nil;
@@ -137,7 +143,7 @@
                     }
 
                     dispatch_async(dispatch_get_main_queue(), ^{
-
+                        _progressView.hidden = YES;
                         if (image != nil) {
                             [self setupImageViewWithImage:image];
                         }
@@ -152,13 +158,18 @@
 
         }
         else {
-            [[FSImageLoader sharedInstance] loadImageForURL:_image.URL image:^(UIImage *image, NSError *error) {
+            _progressView.hidden = NO;
+            __weak FSImageView *weakSelf = self;
+            [[FSImageLoader sharedInstance] loadImageForURL:_image.URL progress:^(float progress) {
+                [weakSelf.progressView setProgress:progress animated:YES];
+            }image:^(UIImage *image, NSError *error) {
+                __strong FSImageView *strongSelf = weakSelf;
                 if (!error) {
-                    _image.image = image;
-                    [self setupImageViewWithImage:image];
+                    strongSelf.image.image = image;
+                    [strongSelf setupImageViewWithImage:image];
                 }
                 else {
-                    [self handleFailedImage];
+                    [strongSelf handleFailedImage];
                 }
             }];
         }
@@ -166,8 +177,7 @@
     }
 
     if (_imageView.image) {
-
-        [activityView stopAnimating];
+        _progressView.hidden = YES;
         self.userInteractionEnabled = YES;
         _loading = NO;
 
@@ -178,7 +188,6 @@
 
     } else {
         _loading = YES;
-        [activityView startAnimating];
         self.userInteractionEnabled = NO;
     }
     [self layoutScrollViewAnimated:NO];
@@ -190,7 +199,7 @@
     }
 
     _loading = NO;
-    [activityView stopAnimating];
+    _progressView.hidden = YES;
     _imageView.image = aImage;
     [self layoutScrollViewAnimated:NO];
 
@@ -213,6 +222,10 @@
     self.scrollView.backgroundColor = color;
 }
 
+- (void)changeProgressViewColor:(UIColor *)color {
+    _progressView.tintColor = color;
+}
+
 
 - (void)handleFailedImage {
 
@@ -220,7 +233,7 @@
     _image.failed = YES;
     [self layoutScrollViewAnimated:NO];
     self.userInteractionEnabled = NO;
-    [activityView stopAnimating];
+    _progressView.hidden = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:kFSImageViewerDidFinishedLoadingNotificationKey object:@{
             @"image" : self.image,
             @"failed" : @(YES)

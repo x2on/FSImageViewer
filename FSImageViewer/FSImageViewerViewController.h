@@ -78,6 +78,12 @@
 /// Override the background color when overlay is visible - Default is white
 @property(strong, nonatomic) UIColor *backgroundColorVisible;
 
+/// Override the progressView color when overlay is hidden - Default is white
+@property(strong, nonatomic) UIColor *progressColorHidden;
+
+/// Override the progressView color when overlay is visible - Default is darkGrayColor
+@property(strong, nonatomic) UIColor *progressColorVisible;
+
 /// Used to add additional items to the "share" button
 @property(strong, nonatomic) NSArray* applicationActivities;
 

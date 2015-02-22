@@ -5,6 +5,7 @@ inhibit_all_warnings!
 
 pod 'AFNetworking', '~> 2.5'
 pod 'EGOCache', '~> 2.1'
+pod 'UAProgressView', '~> 0.1'
 
 target :FSImageViewerTests, :exclusive => true do
 	pod 'OCMock', '~> 2.2.4'

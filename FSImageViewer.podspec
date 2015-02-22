@@ -22,5 +22,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'AFNetworking', '~> 2.5'
   s.dependency 'EGOCache', '~> 2.1'
+  s.dependency 'UAProgressView', '~> 0.1'
 
 end
