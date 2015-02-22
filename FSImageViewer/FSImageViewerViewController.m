@@ -70,13 +70,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)didReceiveMemoryWarning {
-    self.imageViews = nil;
-    _scrollView.delegate = nil;
-    self.scrollView = nil;
-    self.titleView = nil;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
