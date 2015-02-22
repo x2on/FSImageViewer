@@ -109,7 +109,7 @@
     self.imageViews = views;
 }
 
-- (void) setTitleView:(UIView<FSTitleView> *)titleView {
+- (void)setTitleView:(UIView<FSTitleView> *)titleView {
     if(_titleView) {
         [_titleView removeFromSuperview];
     }
