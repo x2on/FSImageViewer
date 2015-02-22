@@ -125,21 +125,19 @@
 }
 
 - (void)adjustFontSizeToFit {
-    UIFont *font = textLabel.font;
-    CGSize size = textLabel.frame.size;
     
-    for (CGFloat maxSize = textLabel.font.pointSize; maxSize >= textLabel.minimumScaleFactor * textLabel.font.pointSize; maxSize -= 1.f) {
-        font = [font fontWithSize:maxSize];
-        CGSize constraintSize = CGSizeMake(size.width, MAXFLOAT);
-        CGSize labelSize = [textLabel.text sizeWithFont:font constrainedToSize:constraintSize lineBreakMode:textLabel.lineBreakMode];
+    for (int i = textLabel.font.pointSize; i>textLabel.minimumScaleFactor * textLabel.font.pointSize; i--) {
         
-        if(labelSize.height <= size.height) {
-            textLabel.font = font;
-            [textLabel setNeedsLayout];
+        UIFont *font = [UIFont fontWithName:textLabel.font.fontName size:(CGFloat)i];
+        NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:textLabel.text attributes:@{NSFontAttributeName: font}];
+        
+        CGRect rectSize = [attributedText boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+        
+        if (rectSize.size.height <= self.frame.size.height) {
+            textLabel.font = [UIFont fontWithName:textLabel.font.fontName size:(CGFloat)i];
             break;
         }
     }
-    
 }
 
 @end
