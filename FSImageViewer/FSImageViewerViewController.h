@@ -25,6 +25,7 @@
 #import "FSImageViewer.h"
 #import "FSImageSource.h"
 #import "FSTitleView.h"
+#import "FSImageView.h"
 
 @class FSImageViewerViewController;
 
@@ -50,6 +51,10 @@
 /// @param imageSource image data source
 /// @param imageIndex the index of the first shown image
 - (id)initWithImageSource:(id <FSImageSource>)imageSource imageIndex:(NSInteger)imageIndex;
+
+// @param rect is the size of the scrollView bounds for the image view.
+// Allows you to extend and customize the FSImageView used.
+@property (nonatomic, copy) FSImageView* (^createCustomImageView)(CGRect rect);
 
 /// Image data source
 @property(strong, nonatomic, readonly) id <FSImageSource> imageSource;
