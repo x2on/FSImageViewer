@@ -23,6 +23,7 @@
 //
 
 #import <EGOCache/EGOCache.h>
+#import <CommonCrypto/CommonDigest.h>
 #import "FSImageLoader.h"
 #import "AFHTTPRequestOperation.h"
 
@@ -76,9 +77,24 @@
         }];
         imageBlock(nil, error);
     };
-    NSString *cacheKey = [NSString stringWithFormat:@"FSImageLoader-%lu", (unsigned long)[[aURL description] hash]];
-
+    
+    NSString *urlString = [[aURL absoluteString] copy];
+    NSData *data = [urlString dataUsingEncoding:NSUTF8StringEncoding];
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    CC_SHA1(data.bytes, (CC_LONG)data.length, digest);
+    NSMutableString *urlStringSha1 = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    for (int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
+        [urlStringSha1 appendFormat:@"%02x", digest[i]];
+    }
+    NSString *cacheKey = [NSString stringWithFormat:@"FSImageLoader-%@", [urlStringSha1 copy]];
     UIImage *anImage = [[EGOCache globalCache] imageForKey:cacheKey];
+    
+    if (!anImage) {
+        // Deprecated cacheKey
+        NSString *deprecatedCacheKey = [NSString stringWithFormat:@"FSImageLoader-%lu", (unsigned long) [[aURL description] hash]];
+        anImage = [[EGOCache globalCache] imageForKey:deprecatedCacheKey];
+    }
+
 
     if (anImage) {
         if (imageBlock) {
