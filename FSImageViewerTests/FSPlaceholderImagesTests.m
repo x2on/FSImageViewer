@@ -32,7 +32,7 @@ describe(@"test", ^{
     
     it(@"matches view", ^{
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[FSPlaceholderImages errorImage]];
-        EXP_expect(imageView).to.haveValidSnapshot();
+        expect(imageView).to.haveValidSnapshot();
     });
     
 });

@@ -11,6 +11,6 @@
     #import <Specta/Specta.h>
     #import <Expecta/Expecta.h>
     #import <FBSnapshotTestCase/FBSnapshotTestCase.h>
-    #import <EXPMatchers+FBSnapshotTest/EXPMatchers+FBSnapshotTest.h>
+    #import <Expecta+Snapshots/EXPMatchers+FBSnapshotTest.h>
     #define EXP_SHORTHAND
 #endif

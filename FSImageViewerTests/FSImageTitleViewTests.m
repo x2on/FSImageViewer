@@ -33,19 +33,19 @@ describe(@"test", ^{
     it(@"matches view with short title", ^{
         FSImageTitleView *view = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, 0, 280, 40)];
         view.text = @"Some title";
-        EXP_expect(view).to.haveValidSnapshot();
+        expect(view).to.haveValidSnapshot();
     });
     
     it(@"matches view with longer title", ^{
         FSImageTitleView *view = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, 0, 280, 40)];
         view.text = @"Some longer title with some lorem ipsum text";
-        EXP_expect(view).to.haveValidSnapshot();
+        expect(view).to.haveValidSnapshot();
     });
     
     it(@"matches view with very long title", ^{
         FSImageTitleView *view = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, 0, 280, 40)];
         view.text = @"Some longer title with some lorem ipsum text and some other lorem ipsum and another lorem ipsum text";
-        EXP_expect(view).to.haveValidSnapshot();
+        expect(view).to.haveValidSnapshot();
     });
     
 });

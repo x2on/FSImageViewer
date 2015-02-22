@@ -9,7 +9,7 @@ pod 'UAProgressView', '~> 0.1'
 
 target :FSImageViewerTests, :exclusive => true do
 	pod 'OCMock', '~> 2.2.4'
-	pod 'FBSnapshotTestCase', '~> 1.1'
-	pod 'Specta', '~> 0.2.1'
-	pod 'EXPMatchers+FBSnapshotTest', '~> 1.1.0'
+	pod 'FBSnapshotTestCase', '~> 1.5'
+	pod 'Specta', '~> 0.3.2'
+	pod 'Expecta+Snapshots', '~> 1.3.1'
 end
