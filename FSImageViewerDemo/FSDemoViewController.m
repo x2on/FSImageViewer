@@ -50,9 +50,11 @@
 - (IBAction)openGallery {
     FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm8.staticflickr.com/7319/9668947331_3112b1fcca_b.jpg"] name:@"Photo by Brian Adamson"];
     FSBasicImage *secondPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm9.staticflickr.com/8023/6971840814_68614eba26_b.jpg"] name:@"Photo by Ben Fredericson (http://farm9.staticflickr.com/8023/6971840814_68614eba26_b.jpg)"];
+        FSBasicImage *thirdPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://farm5.staticflickr.com/4094/4888398067_36e695177a_o.jpg"] name:@"Photo by digital cat (https://www.flickr.com/photos/14646075@N03/4888398067)"];
+    
     FSBasicImage *failingPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://example.com/1.jpg"] name:@"Failure image"];
 
-    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto, secondPhoto, failingPhoto]];
+    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto, secondPhoto, thirdPhoto, failingPhoto]];
     self.imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
     
     _imageViewController.delegate = self;

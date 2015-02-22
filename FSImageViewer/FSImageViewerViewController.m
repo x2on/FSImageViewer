@@ -49,8 +49,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageViewDidFinishLoading:) name:kFSImageViewerDidFinishedLoadingNotificationKey object:nil];
 
         self.hidesBottomBarWhenPushed = YES;
-        self.wantsFullScreenLayout = YES;
-        
+                
         self.backgroundColorHidden = [UIColor blackColor];
         self.backgroundColorVisible = [UIColor whiteColor];
 
