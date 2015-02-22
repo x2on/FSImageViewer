@@ -4,7 +4,7 @@
 
 FSImageViewer is a photo viewer for iOS.
 
-It's initially based on [EGOPhotoViewer](https://raw.github.com/enormego/PhotoViewer), but completely refactored to use ARC, [AFNetworking 2.2](https://github.com/AFNetworking/AFNetworking) for remote image downloads and [EGOCache 2.0](https://github.com/enormego/EGOCache) for image caching.
+It's initially based on [EGOPhotoViewer](https://raw.github.com/enormego/PhotoViewer), but completely refactored to use ARC, [AFNetworking 2.5](https://github.com/AFNetworking/AFNetworking) for remote image downloads and [EGOCache 2.1](https://github.com/enormego/EGOCache) for image caching.
 
 If you must use AFNetworking 1.3 you can use the 1.x version of FSImageViewer (https://github.com/x2on/FSImageViewer/tree/1.x)
 
@@ -52,9 +52,10 @@ The demo project uses [CocoaPods](http://cocoapods.org/) for dependency manageme
 Install dependencies:`pod install`
 
 ## System support
-iOS 6.0+ is currently supported.
+iOS 7.0+ is currently supported.
 
 If you must support iOS 5.0+ you can use the 1.x version of FSImageViewer.
+If you must support iOS 6.0+ you can use the 2.x version of FSImageViewer.
 
 ## License
 
