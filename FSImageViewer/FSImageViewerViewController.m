@@ -62,6 +62,7 @@
         
         self.sharingDisabled = NO;
         self.showNumberOfItemsInTitle = YES;
+        self.rotationEnabled = YES;
     }
     return self;
 }
@@ -458,6 +459,7 @@
 
     if (imageView == nil || (NSNull *) imageView == [NSNull null]) {
         imageView = [[FSImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _scrollView.bounds.size.width, _scrollView.bounds.size.height)];
+        imageView.rotationEnabled = _rotationEnabled;
         UIColor *backgroundColor = barsHidden ? _backgroundColorHidden : _backgroundColorVisible;
         [imageView changeBackgroundColor:backgroundColor];
         [imageView changeProgressViewColor:barsHidden ? _progressColorHidden : _progressColorVisible];

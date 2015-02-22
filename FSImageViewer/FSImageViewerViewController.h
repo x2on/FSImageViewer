@@ -69,8 +69,11 @@
 /// Display a "x of y" images in the navigation title - Default is YES
 @property(assign, nonatomic) BOOL showNumberOfItemsInTitle;
 
-/// Disable image sharing
+/// Disable image sharing - Default is NO
 @property(assign, nonatomic, getter = isSharingDisabled) BOOL sharingDisabled;
+
+/// Override rotation of images - Default is YES
+@property(assign, nonatomic, getter = isRotationEnabled) BOOL rotationEnabled;
 
 /// Override the background color when overlay is hidden - Default is black
 @property(strong, nonatomic) UIColor *backgroundColorHidden;

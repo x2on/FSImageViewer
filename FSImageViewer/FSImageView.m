@@ -60,6 +60,7 @@
         self.userInteractionEnabled = NO;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.opaque = YES;
+        self.rotationEnabled = YES;
 
         FSImageScrollView *scrollView = [[FSImageScrollView alloc] initWithFrame:self.bounds];
         scrollView.backgroundColor = [UIColor whiteColor];
@@ -418,6 +419,9 @@
 
 - (void)rotate:(UIRotationGestureRecognizer *)gesture {
 
+    if (!_rotationEnabled) {
+        return;
+    }
     if (gesture.state == UIGestureRecognizerStateBegan) {
         [self.layer removeAllAnimations];
         beginRadians = gesture.rotation;

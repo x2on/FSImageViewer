@@ -35,6 +35,7 @@
 @property(strong, nonatomic, readonly) UIImageView *imageView;
 @property(strong, nonatomic, readonly) FSImageScrollView *scrollView;
 @property(assign, nonatomic) BOOL loading;
+@property(assign, nonatomic) BOOL rotationEnabled;
 
 - (void)killScrollViewZoom;
 
