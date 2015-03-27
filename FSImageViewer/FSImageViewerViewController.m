@@ -527,8 +527,8 @@
     static NSBundle *bundle = nil;
     if (bundle == nil)
     {
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"FSImageViewer" ofType:@"bundle"];
-        bundle = [NSBundle bundleWithPath:bundlePath] ?: [NSBundle mainBundle];
+        NSString *bundlePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"FSImageViewer" ofType:@"bundle"];
+        bundle = [NSBundle bundleWithPath:bundlePath] ?: [NSBundle bundleForClass:[self class]];
         for (NSString *language in [NSLocale preferredLanguages])
             {
                 if ([[bundle localizations] containsObject:language])
@@ -540,7 +540,7 @@
             }
         }
     defaultString = [bundle localizedStringForKey:key value:defaultString table:nil];
-    return [[NSBundle mainBundle] localizedStringForKey:key value:defaultString table:nil];
+    return [[NSBundle bundleForClass:[self class]] localizedStringForKey:key value:defaultString table:nil];
 }
 
 @end
