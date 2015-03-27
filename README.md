@@ -2,7 +2,7 @@
 
 ![Screenshot](https://raw.github.com/x2on/FSImageViewer/master/screen.png)
 
-FSImageViewer is a photo viewer for iOS.
+FSImageViewer is a photo viewer (gallery) for iOS.
 
 It's initially based on [EGOPhotoViewer](https://raw.github.com/enormego/PhotoViewer), but completely refactored to use ARC, [AFNetworking 2.5](https://github.com/AFNetworking/AFNetworking) for remote image downloads and [EGOCache 2.1](https://github.com/enormego/EGOCache) for image caching.
 
@@ -11,7 +11,7 @@ If you must use AFNetworking 1.3 you can use the 1.x version of FSImageViewer (h
 ## Install
 Using [CocoaPods](http://cocoapods.org/):
 
-`pod 'FSImageViewer', '~> 3.1'`
+`pod 'FSImageViewer', '~> 3.2'`
 
 ## Basic usage
 
