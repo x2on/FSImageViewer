@@ -128,7 +128,7 @@
 
     shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share:)];
     shareButton.enabled = NO;
-    if (self.presentingViewController && (self.modalPresentationStyle == UIModalPresentationFullScreen)) {
+    if (!self.shouldNotShowModally || (self.presentingViewController && (self.modalPresentationStyle == UIModalPresentationFullScreen))) {
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:[self localizedStringForKey:@"done" withDefault:@"Done"] style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
         self.navigationItem.rightBarButtonItem = doneButton;
         if (!_sharingDisabled) {
