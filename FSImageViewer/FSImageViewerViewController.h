@@ -76,7 +76,7 @@
 @property(assign, nonatomic, getter = isRotationEnabled) BOOL rotationEnabled;
 
 /// Override default modality detection - Default is NO
-@property(assign, nonatomic) BOOL shouldNotShowModally;
+@property(assign, nonatomic) BOOL ignoreModality;
 
 /// Override the background color when overlay is hidden - Default is black
 @property(strong, nonatomic) UIColor *backgroundColorHidden;
