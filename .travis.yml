@@ -1,9 +1,10 @@
 language: objective-c
+osx_image: xcode6.4
 before_install: 
  - echo "Update CocoaPods"
  - gem install cocoapods
  - pod --version
 script: 
- - xctool -workspace FSImageViewer.xcworkspace -scheme FSImageViewer -sdk iphonesimulator clean build
+ - xctool -workspace FSImageViewer.xcworkspace -scheme FSImageViewer -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 5' clean build test
  - pod --version
  - pod spec lint FSImageViewer.podspec
