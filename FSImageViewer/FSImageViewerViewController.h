@@ -45,11 +45,11 @@
 @interface FSImageViewerViewController : UIViewController <UIScrollViewDelegate>
 
 /// @param imageSource image data source
-- (id)initWithImageSource:(id <FSImageSource>)imageSource;
+- (instancetype)initWithImageSource:(id <FSImageSource>)imageSource;
 
 /// @param imageSource image data source
 /// @param imageIndex the index of the first shown image
-- (id)initWithImageSource:(id <FSImageSource>)imageSource imageIndex:(NSInteger)imageIndex;
+- (instancetype)initWithImageSource:(id <FSImageSource>)imageSource imageIndex:(NSInteger)imageIndex;
 
 /// Image data source
 @property(strong, nonatomic, readonly) id <FSImageSource> imageSource;

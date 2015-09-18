@@ -30,7 +30,7 @@
     BOOL hidden;
 }
 
-- (id)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
 
         self.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.3f];

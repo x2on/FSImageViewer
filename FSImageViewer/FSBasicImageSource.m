@@ -29,7 +29,7 @@
 @synthesize images = _images;
 @synthesize numberOfImages = _numberOfImages;
 
-- (id)initWithImages:(NSArray*)images{
+- (instancetype)initWithImages:(NSArray*)images{
 	
 	if (self = [super init]) {
         _images = images;

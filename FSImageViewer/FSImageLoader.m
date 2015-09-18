@@ -40,7 +40,7 @@
     return sharedInstance;
 }
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.timeoutInterval = 30.0;

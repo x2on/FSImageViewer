@@ -32,7 +32,7 @@
 @synthesize image = _image;
 @synthesize failed = _failed;
 
-- (id)initWithImageURL:(NSURL *)aURL name:(NSString *)aName image:(UIImage *)aImage {
+- (instancetype)initWithImageURL:(NSURL *)aURL name:(NSString *)aName image:(UIImage *)aImage {
     self = [super init];
     if (self) {
         _URL = aURL;
@@ -43,19 +43,19 @@
     return self;
 }
 
-- (id)initWithImageURL:(NSURL *)aURL name:(NSString *)aName {
+- (instancetype)initWithImageURL:(NSURL *)aURL name:(NSString *)aName {
     return [self initWithImageURL:aURL name:aName image:nil];
 }
 
-- (id)initWithImageURL:(NSURL *)aURL {
+- (instancetype)initWithImageURL:(NSURL *)aURL {
     return [self initWithImageURL:aURL name:nil image:nil];
 }
 
-- (id)initWithImage:(UIImage *)aImage {
+- (instancetype)initWithImage:(UIImage *)aImage {
     return [self initWithImageURL:nil name:nil image:aImage];
 }
 
-- (id)initWithImage:(UIImage *)aImage name:(NSString *)aName {
+- (instancetype)initWithImage:(UIImage *)aImage name:(NSString *)aName {
     return [self initWithImageURL:nil name:aName image:aImage];
 }
 
