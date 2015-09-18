@@ -26,28 +26,34 @@
 
 #import "FSImageTitleView.h"
 
-SpecBegin(FSImageTitleView)
+@interface FSImageTitleViewTests : FBSnapshotTestCase
+@end
 
-describe(@"test", ^{
-    
-    it(@"matches view with short title", ^{
-        FSImageTitleView *view = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, 0, 280, 40)];
-        view.text = @"Some title";
-        expect(view).to.haveValidSnapshot();
-    });
-    
-    it(@"matches view with longer title", ^{
-        FSImageTitleView *view = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, 0, 280, 40)];
-        view.text = @"Some longer title with some lorem ipsum text";
-        expect(view).to.haveValidSnapshot();
-    });
-    
-    it(@"matches view with very long title", ^{
-        FSImageTitleView *view = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, 0, 280, 40)];
-        view.text = @"Some longer title with some lorem ipsum text and some other lorem ipsum and another lorem ipsum text";
-        expect(view).to.haveValidSnapshot();
-    });
-    
-});
+@implementation FSImageTitleViewTests
 
-SpecEnd
+- (void)setUp {
+    [super setUp];
+
+    self.recordMode = NO;
+}
+
+
+- (void)testShortTitle {
+    FSImageTitleView *view = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, 0, 280, 40)];
+    view.text = @"Some title";
+    FBSnapshotVerifyView(view, nil);
+}
+
+- (void)testNormalTitle {
+    FSImageTitleView *view = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, 0, 280, 40)];
+    view.text = @"Some longer title with some lorem ipsum text";
+    FBSnapshotVerifyView(view, nil);
+}
+
+- (void)testLongTitle {
+    FSImageTitleView *view = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, 0, 280, 40)];
+    view.text = @"Some longer title with some lorem ipsum text and some other lorem ipsum and another lorem ipsum text";
+    FBSnapshotVerifyView(view, nil);
+}
+
+@end

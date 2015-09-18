@@ -24,17 +24,27 @@
 //  THE SOFTWARE.
 //
 
+#import <XCTest/XCTest.h>
+#import <FBSnapshotTestCase/FBSnapshotTestCase.h>
+
 #import "FSPlaceholderImages.h"
 
-SpecBegin(FSPlaceholderImages)
 
-describe(@"test", ^{
-    
-    it(@"matches view", ^{
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[FSPlaceholderImages errorImage]];
-        expect(imageView).to.haveValidSnapshot();
-    });
-    
-});
+@interface FSPlaceholderImagesTests : FBSnapshotTestCase
+@end
 
-SpecEnd
+@implementation FSPlaceholderImagesTests
+
+- (void)setUp {
+    [super setUp];
+
+    self.recordMode = NO;
+}
+
+
+- (void)testView {
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[FSPlaceholderImages errorImage]];
+    FBSnapshotVerifyView(imageView, nil);
+}
+
+@end
