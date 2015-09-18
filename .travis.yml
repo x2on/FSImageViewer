@@ -4,6 +4,8 @@ before_install:
  - echo "Update CocoaPods"
  - gem install cocoapods
  - pod --version
+ - brew update
+ - brew outdated xctool || brew upgrade xctool
 script: 
  - xctool -workspace FSImageViewer.xcworkspace -scheme FSImageViewer -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' clean build test
  - pod --version
