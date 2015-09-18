@@ -366,10 +366,8 @@
 
     if (scrollView.zoomScale > 1.0f) {
 
-        CGFloat height, width;
-        height = MIN(CGRectGetHeight(self.imageView.frame) + self.imageView.frame.origin.x, CGRectGetHeight(self.bounds));
-        width = MIN(CGRectGetWidth(self.imageView.frame) + self.imageView.frame.origin.y, CGRectGetWidth(self.bounds));
-
+        CGFloat height;
+        CGFloat width;
 
         if (CGRectGetMaxX(self.imageView.frame) > self.bounds.size.width) {
             width = CGRectGetWidth(self.bounds);
