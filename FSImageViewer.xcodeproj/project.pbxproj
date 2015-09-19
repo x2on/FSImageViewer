@@ -28,6 +28,9 @@
 		FD89E2D317CB9A0E00A41D91 /* FSPlaceholderImages.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2D117CB9A0E00A41D91 /* FSPlaceholderImages.m */; };
 		FD89E2DD17CB9A4400A41D91 /* FSDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD89E2D917CB9A4400A41D91 /* FSDemoViewController.m */; };
 		FD89E2DE17CB9A4400A41D91 /* FSDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD89E2DA17CB9A4400A41D91 /* FSDemoViewController.xib */; };
+		FD8B868C1BAD6F2400EA0D5D /* FSImageViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8B868B1BAD6F2400EA0D5D /* FSImageViewTests.m */; settings = {ASSET_TAGS = (); }; };
+		FD8B868E1BAD97DC00EA0D5D /* Testimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD8B868D1BAD97DC00EA0D5D /* Testimage.jpg */; settings = {ASSET_TAGS = (); }; };
+		FD8B86921BAD986B00EA0D5D /* FSTestImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8B86911BAD986B00EA0D5D /* FSTestImageHelper.m */; settings = {ASSET_TAGS = (); }; };
 		FDBD6630193B054F006D3BF6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDBD662F193B054F006D3BF6 /* XCTest.framework */; };
 		FDBD6631193B054F006D3BF6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E29317CB99D900A41D91 /* Foundation.framework */; };
 		FDBD6632193B054F006D3BF6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E2A617CB99F000A41D91 /* UIKit.framework */; };
@@ -126,6 +129,10 @@
 		FD89E2D817CB9A4400A41D91 /* FSDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSDemoViewController.h; sourceTree = "<group>"; };
 		FD89E2D917CB9A4400A41D91 /* FSDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSDemoViewController.m; sourceTree = "<group>"; };
 		FD89E2DA17CB9A4400A41D91 /* FSDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSDemoViewController.xib; sourceTree = "<group>"; };
+		FD8B868B1BAD6F2400EA0D5D /* FSImageViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageViewTests.m; sourceTree = "<group>"; };
+		FD8B868D1BAD97DC00EA0D5D /* Testimage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Testimage.jpg; sourceTree = "<group>"; };
+		FD8B86901BAD986B00EA0D5D /* FSTestImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTestImageHelper.h; sourceTree = "<group>"; };
+		FD8B86911BAD986B00EA0D5D /* FSTestImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTestImageHelper.m; sourceTree = "<group>"; };
 		FDBD662E193B054F006D3BF6 /* FSImageViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FSImageViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDBD662F193B054F006D3BF6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		FDBD6635193B054F006D3BF6 /* FSImageViewerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FSImageViewerTests-Info.plist"; sourceTree = "<group>"; };
@@ -289,11 +296,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FD8B868F1BAD985600EA0D5D /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				FD8B86901BAD986B00EA0D5D /* FSTestImageHelper.h */,
+				FD8B86911BAD986B00EA0D5D /* FSTestImageHelper.m */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
 		FDBD6633193B054F006D3BF6 /* FSImageViewerTests */ = {
 			isa = PBXGroup;
 			children = (
+				FD8B868F1BAD985600EA0D5D /* Helper */,
 				FDBD6639193B054F006D3BF6 /* FSImageTitleViewTests.m */,
 				FDCB0B26193B956500F8B8A1 /* FSPlaceholderImagesTests.m */,
+				FD8B868B1BAD6F2400EA0D5D /* FSImageViewTests.m */,
+				FD8B868D1BAD97DC00EA0D5D /* Testimage.jpg */,
 				FDBD6634193B054F006D3BF6 /* Supporting Files */,
 			);
 			path = FSImageViewerTests;
@@ -428,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDBD6638193B054F006D3BF6 /* InfoPlist.strings in Resources */,
+				FD8B868E1BAD97DC00EA0D5D /* Testimage.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +578,8 @@
 			files = (
 				FDCB0B27193B956500F8B8A1 /* FSPlaceholderImagesTests.m in Sources */,
 				FDBD663A193B054F006D3BF6 /* FSImageTitleViewTests.m in Sources */,
+				FD8B86921BAD986B00EA0D5D /* FSTestImageHelper.m in Sources */,
+				FD8B868C1BAD6F2400EA0D5D /* FSImageViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
