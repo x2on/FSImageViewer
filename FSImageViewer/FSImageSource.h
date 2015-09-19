@@ -28,7 +28,7 @@
 @protocol FSImageSource <NSObject>
 
 /// The array contains all image objects.
-@property(strong, nonatomic, readonly) NSArray *images;
+@property(strong, nonatomic, readonly) NSArray<id <FSImage>> *images;
 
 /// The number of the image objects are stored in the images array.
 @property(assign, nonatomic, readonly) NSInteger numberOfImages;
