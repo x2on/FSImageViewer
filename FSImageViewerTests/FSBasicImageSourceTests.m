@@ -26,6 +26,7 @@
 
 #import "FSBasicImageSource.h"
 #import "FSImage.h"
+#import "FSBasicImage.h"
 
 @interface FSBasicImageSourceTests : XCTestCase
 
@@ -40,6 +41,15 @@
     
     XCTAssertEqual(imageSource.numberOfImages, 1);
     XCTAssertEqual(imageSource[0], imageMock);
+}
+
+- (void)testObjectSubscriptionWithBasicImage {
+    FSBasicImage *basicImage = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:@"http://example.com"]];
+    NSArray<id <FSImage>> *basicImageSource = @[basicImage];
+    FSBasicImageSource *imageSource = [[FSBasicImageSource alloc] initWithImages:basicImageSource];
+    
+    XCTAssertEqual(imageSource.numberOfImages, 1);
+    XCTAssertEqual(imageSource[0], basicImage);
 }
 
 @end
