@@ -28,8 +28,13 @@
 @implementation FSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    FSDemoViewController *viewController = [[FSDemoViewController alloc] init];
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    if (!getenv("UNIT_TEST")) {
+        FSDemoViewController *viewController = [[FSDemoViewController alloc] init];
+        self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    }
+    else {
+        self.navigationController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
+    }
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = _navigationController;

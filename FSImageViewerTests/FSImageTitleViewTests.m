@@ -42,18 +42,33 @@
     FSImageTitleView *view = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, 0, 280, 40)];
     view.text = @"Some title";
     FBSnapshotVerifyView(view, nil);
+    XCTAssertFalse(view.isHidden);
 }
 
 - (void)testNormalTitle {
     FSImageTitleView *view = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, 0, 280, 40)];
     view.text = @"Some longer title with some lorem ipsum text";
     FBSnapshotVerifyView(view, nil);
+    XCTAssertFalse(view.isHidden);
 }
 
 - (void)testLongTitle {
     FSImageTitleView *view = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, 0, 280, 40)];
     view.text = @"Some longer title with some lorem ipsum text and some other lorem ipsum and another lorem ipsum text";
     FBSnapshotVerifyView(view, nil);
+    XCTAssertFalse(view.isHidden);
+}
+
+- (void)testIsHiddenIfNoText {
+    FSImageTitleView *view = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, 0, 280, 40)];
+    view.text = nil;
+    XCTAssertTrue(view.isHidden);
+}
+
+- (void)testIsHiddenIfTextContainsOnlyWhitespace {
+    FSImageTitleView *view = [[FSImageTitleView alloc] initWithFrame:CGRectMake(0, 0, 280, 40)];
+    view.text = @"  ";
+    XCTAssertTrue(view.isHidden);
 }
 
 @end

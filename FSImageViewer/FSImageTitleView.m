@@ -116,6 +116,10 @@
     hidden = value;
 }
 
+- (void)setHidden:(BOOL)aHidden {
+    hidden = aHidden;
+}
+
 - (BOOL)isHidden {
     return hidden;
 }
