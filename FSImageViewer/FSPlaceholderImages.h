@@ -26,6 +26,6 @@
 
 @interface FSPlaceholderImages : NSObject
 
-+ (UIImage *)errorImage;
++ (UIImage * _Nonnull)errorImage;
 
 @end

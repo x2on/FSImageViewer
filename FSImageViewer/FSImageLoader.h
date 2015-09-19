@@ -24,6 +24,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /// Download remote images with AFNetworking
 @interface FSImageLoader : NSObject
 
@@ -36,7 +38,7 @@
 /// Download remote images from url
 /// @param url remote image url
 /// @param imageBlock block for image or error
-- (void)loadImageForURL:(NSURL *)url progress:(void (^)(float progress))progress image:(void (^)(UIImage *image, NSError *error))imageBlock;
+- (void)loadImageForURL:(NSURL * _Nonnull)url progress:(void (^)(float progress))progress image:(void (^)(UIImage * __nullable image, NSError * __nullable error))imageBlock;
 
 /// Cancel all image requests
 - (void)cancelAllRequests;
@@ -44,5 +46,7 @@
 /// Cancel image request
 /// @param url remote image url
 - (void)cancelRequestForUrl:(NSURL *)url;
+
+NS_ASSUME_NONNULL_END
 
 @end
