@@ -37,7 +37,6 @@
 		FDBD6632193B054F006D3BF6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E2A617CB99F000A41D91 /* UIKit.framework */; };
 		FDBD6638193B054F006D3BF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDBD6636193B054F006D3BF6 /* InfoPlist.strings */; };
 		FDBD663A193B054F006D3BF6 /* FSImageTitleViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBD6639193B054F006D3BF6 /* FSImageTitleViewTests.m */; };
-		FDCB0B25193B90C200F8B8A1 /* libFSImageViewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E29017CB99D900A41D91 /* libFSImageViewer.a */; };
 		FDCB0B27193B956500F8B8A1 /* FSPlaceholderImagesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDCB0B26193B956500F8B8A1 /* FSPlaceholderImagesTests.m */; };
 		FDD96CE417CB9B7400B66931 /* libFSImageViewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD89E29017CB99D900A41D91 /* libFSImageViewer.a */; };
 		FDD96CEB17CB9B9000B66931 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD96CE917CB9B8800B66931 /* CFNetwork.framework */; };
@@ -176,7 +175,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDCB0B25193B90C200F8B8A1 /* libFSImageViewer.a in Frameworks */,
 				FDBD6630193B054F006D3BF6 /* XCTest.framework in Frameworks */,
 				FDBD6632193B054F006D3BF6 /* UIKit.framework in Frameworks */,
 				FDBD6631193B054F006D3BF6 /* Foundation.framework in Frameworks */,
