@@ -67,5 +67,14 @@
     FBSnapshotVerifyView(view, nil);
 }
 
+- (void)testFailedView {
+    id mock = OCMProtocolMock(@protocol(FSImage));
+    OCMStub([mock didFail]).andReturn(YES);
+    FSImageView *view = [[FSImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    view.image = mock;
+    FBSnapshotVerifyView(view, nil);
+}
+
+
 
 @end
