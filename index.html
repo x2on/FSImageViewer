@@ -1,80 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta charset="UTF-8">
     <title>FSImageviewer by x2on</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+    <section class="page-header">
+      <h1 class="project-name">FSImageviewer</h1>
+      <h2 class="project-tagline">Photo viewer (gallery) for iOS with AFNetworking and caching.</h2>
+      <a href="https://github.com/x2on/FSImageViewer" class="btn">View on GitHub</a>
+      <a href="https://github.com/x2on/FSImageViewer/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/x2on/FSImageViewer/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        <header>
-          <h1>FSImageviewer</h1>
-          <h2>Photo viewer (gallery) for iOS with AFNetworking and caching.</h2>
-        </header>
-
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/x2on/FSImageViewer/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/x2on/FSImageViewer/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/x2on/FSImageViewer" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          <h1>
-<a name="fsimageviewer" class="anchor" href="#fsimageviewer"><span class="octicon octicon-link"></span></a>FSImageViewer</h1>
+    <section class="main-content">
+      <h1>
+<a id="fsimageviewer" class="anchor" href="#fsimageviewer" aria-hidden="true"><span class="octicon octicon-link"></span></a>FSImageViewer</h1>
 
 <p><img src="https://raw.github.com/x2on/FSImageViewer/master/screen.png" alt="Screenshot"></p>
 
-<p>FSImageViewer is a photo viewer for iOS.</p>
+<p>FSImageViewer is a photo viewer (gallery) for iOS.</p>
 
-<p>It's initially based on <a href="https://raw.github.com/enormego/PhotoViewer">EGOPhotoViewer</a>, but completely refactored to use ARC, <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking 2.2</a> for remote image downloads and <a href="https://github.com/enormego/EGOCache">EGOCache 2.0</a> for image caching.</p>
+<p>It's initially based on <a href="https://raw.github.com/enormego/PhotoViewer">EGOPhotoViewer</a>, but completely refactored to use ARC, <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking 2.5+</a> for remote image downloads and <a href="https://github.com/enormego/EGOCache">EGOCache 2.1</a> for image caching.</p>
 
 <p>If you must use AFNetworking 1.3 you can use the 1.x version of FSImageViewer (<a href="https://github.com/x2on/FSImageViewer/tree/1.x">https://github.com/x2on/FSImageViewer/tree/1.x</a>)</p>
 
 <h2>
-<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
 
 <p>Using <a href="http://cocoapods.org/">CocoaPods</a>:</p>
 
-<p><code>pod 'FSImageViewer', '~&gt; 2.5'</code></p>
+<p><code>pod 'FSImageViewer', '~&gt; 3.4'</code></p>
 
 <h2>
-<a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h2>
+<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic usage</h2>
+
+<p>Create your image objects: </p>
+
+<div class="highlight highlight-source-objc"><pre>FSBasicImage *firstPhoto = [[FSBasicImage <span class="pl-c1">alloc</span>] <span class="pl-c1">initWithImageURL:</span>[<span class="pl-c1">NSURL</span> <span class="pl-c1">URLWithString:</span><span class="pl-s"><span class="pl-pds">@"</span>http://example.com/1.jpg<span class="pl-pds">"</span></span>] <span class="pl-c1">name:</span><span class="pl-s"><span class="pl-pds">@"</span>Photo 1<span class="pl-pds">"</span></span>];
+FSBasicImage *secondPhoto = [[FSBasicImage <span class="pl-c1">alloc</span>] <span class="pl-c1">initWithImageURL:</span>[<span class="pl-c1">NSURL</span> <span class="pl-c1">URLWithString:</span><span class="pl-s"><span class="pl-pds">@"</span>http://example.com/2.jpg<span class="pl-pds">"</span></span>] <span class="pl-c1">name:</span><span class="pl-s"><span class="pl-pds">@"</span>Photo 2<span class="pl-pds">"</span></span>];</pre></div>
+
+<p>And add them to the data source:</p>
+
+<div class="highlight highlight-source-objc"><pre>FSBasicImageSource *photoSource = [[FSBasicImageSource <span class="pl-c1">alloc</span>] <span class="pl-c1">initWithImages:</span>@[firstPhoto, secondPhoto]];</pre></div>
+
+<p>And create and show the view controller:</p>
+
+<div class="highlight highlight-source-objc"><pre>FSImageViewerViewController *imageViewController = [[FSImageViewerViewController <span class="pl-c1">alloc</span>] <span class="pl-c1">initWithImageSource:</span>photoSource];
+[<span class="pl-v">self</span>.navigationController <span class="pl-c1">pushViewController:</span>imageViewController <span class="pl-c1">animated:</span><span class="pl-c1">YES</span>];</pre></div>
+
+<p>If you like to use a modal view controller:</p>
+
+<div class="highlight highlight-source-objc"><pre>FSImageViewerViewController *imageViewController = [[FSImageViewerViewController <span class="pl-c1">alloc</span>] <span class="pl-c1">initWithImageSource:</span>photoSource];
+UINavigationController *navigationController = [[UINavigationController <span class="pl-c1">alloc</span>] <span class="pl-c1">initWithRootViewController:</span>imageViewController];
+[<span class="pl-v">self</span>.navigationController <span class="pl-c1">presentViewController:</span>navigationController <span class="pl-c1">animated:</span><span class="pl-c1">YES</span> <span class="pl-c1">completion:</span><span class="pl-c1">nil</span>];</pre></div>
+
+<h2>
+<a id="advanced-usage" class="anchor" href="#advanced-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Advanced usage</h2>
+
+<p>You can also create your own image class by implementing the <code>FSImage</code> protocol and your own datasource by implementing the <code>FSImageSource</code> protocol.</p>
+
+<h2>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h2>
 
 <p>The demo project uses <a href="http://cocoapods.org/">CocoaPods</a> for dependency management.</p>
 
 <p>Install dependencies:<code>pod install</code></p>
 
 <h2>
-<a name="system-support" class="anchor" href="#system-support"><span class="octicon octicon-link"></span></a>System support</h2>
+<a id="system-support" class="anchor" href="#system-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>System support</h2>
 
-<p>iOS 6.0+ is currently supported.</p>
+<p>iOS 7.0+ is currently supported.</p>
 
-<p>If you must support iOS 5.0+ you can use the 1.x version of FSImageViewer.</p>
+<p>If you must support iOS 5.0+ you can use the 1.x version of FSImageViewer.
+If you must support iOS 6.0+ you can use the 2.x version of FSImageViewer.</p>
 
 <h2>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>FSImageViewer is available under the MIT license. See the LICENSE file for more info.</p>
-        </section>
 
-        <footer>
-          FSImageviewer is maintained by <a href="https://github.com/x2on">x2on</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/x2on/FSImageViewer">FSImageviewer</a> is maintained by <a href="https://github.com/x2on">x2on</a>.</span>
 
-                  <script type="text/javascript">
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -85,7 +104,5 @@
             } catch(err) {}
           </script>
 
-      </div>
-    </div>
   </body>
 </html>
