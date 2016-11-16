@@ -25,7 +25,7 @@
 #import <EGOCache/EGOCache.h>
 #import <CommonCrypto/CommonDigest.h>
 #import "FSImageLoader.h"
-#import "AFHTTPRequestOperation.h"
+#import "AFNetworking.h"
 
 @implementation FSImageLoader {
     NSMutableArray *runningRequests;
@@ -55,14 +55,14 @@
 }
 
 - (void)cancelAllRequests {
-    for (AFHTTPRequestOperation *imageRequestOperation in runningRequests) {
+    for (NSURLSessionDataTask *imageRequestOperation in runningRequests) {
         [imageRequestOperation cancel];
     }
 }
 
 - (void)cancelRequestForUrl:(NSURL *)aURL {
-    for (AFHTTPRequestOperation *imageRequestOperation in runningRequests) {
-        if ([imageRequestOperation.request.URL isEqual:aURL]) {
+    for (NSURLSessionDataTask *imageRequestOperation in runningRequests) {
+        if ([imageRequestOperation.currentRequest.URL isEqual:aURL]) {
             [imageRequestOperation cancel];
             break;
         }
@@ -105,32 +105,36 @@
         [self cancelRequestForUrl:aURL];
 
         NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:aURL cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:_timeoutInterval];
-        AFHTTPRequestOperation *imageRequestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
-        imageRequestOperation.responseSerializer = [AFImageResponseSerializer serializer];
-        [runningRequests addObject:imageRequestOperation];
-        __weak AFHTTPRequestOperation *imageRequestOperationForBlock = imageRequestOperation;
+        
 
-        [imageRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-            UIImage *image = responseObject;
-            [[EGOCache globalCache] setImage:image forKey:cacheKey];
-            if (imageBlock) {
-                imageBlock(image, nil);
+        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+        manager.responseSerializer = [AFImageResponseSerializer serializer];
+        
+        __block NSURLSessionDataTask *task;
+        
+        task = [manager dataTaskWithRequest:urlRequest uploadProgress:nil downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+            if (downloadProgress) {
+                progress(downloadProgress.fractionCompleted);
             }
-            [runningRequests removeObject:imageRequestOperationForBlock];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            if (imageBlock) {
-                imageBlock(nil, error);
+        } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            if(!error){
+                UIImage *image = (UIImage*)responseObject;
+                [[EGOCache globalCache] setImage:image forKey:cacheKey];
+                if (imageBlock) {
+                    imageBlock(image, nil);
+                }
+                [runningRequests removeObject:task];
             }
-            [runningRequests removeObject:imageRequestOperationForBlock];
+            else{
+                if (imageBlock) {
+                    imageBlock(nil, error);
+                }
+                [runningRequests removeObject:task];
+            }
+
         }];
         
-        [imageRequestOperation setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-            if (progress) {
-                progress((float)totalBytesRead / totalBytesExpectedToRead);
-            }
-        }];
-        
-        [imageRequestOperation start];
+        [task resume];
     }
 }
 
