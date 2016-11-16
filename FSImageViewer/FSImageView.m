@@ -328,7 +328,7 @@
 
 - (void)killScrollViewZoom {
 
-    if (!self.scrollView.zoomScale > 1.0f) return;
+    if (-self.scrollView.zoomScale > 1.0f) return;
 
     if (!self.imageView.image) {
         return;
